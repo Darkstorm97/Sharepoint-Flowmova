@@ -10,6 +10,7 @@ import PriorityBannerStatus from './PriorityBannerStatus';
 type HostState = 'creating' | 'empty' | 'error' | 'incompatible' | 'loading' | 'missing' | 'permission' | 'ready' | 'repairable' | 'repairing';
 
 interface IPriorityBannerHostState {
+  errorDetails?: string;
   hostState: HostState;
   incompatibleFields?: string[];
   message?: ILocalizedPriorityMessage;
@@ -27,7 +28,7 @@ export default class PriorityBannerHost extends React.Component<IPriorityBannerH
 
   public render(): React.ReactElement {
     const { labels, layout, service } = this.props;
-    const { hostState, incompatibleFields, message, missingFields } = this.state;
+    const { errorDetails, hostState, incompatibleFields, message, missingFields } = this.state;
 
     if (hostState === 'ready' && message) {
       return (
@@ -134,6 +135,7 @@ export default class PriorityBannerHost extends React.Component<IPriorityBannerH
         <PriorityBannerStatus
           actionLabel={labels.retryButton}
           description={labels.errorDescription}
+          details={errorDetails}
           iconName="Error"
           onAction={this._retry}
           title={labels.errorTitle}
@@ -153,6 +155,7 @@ export default class PriorityBannerHost extends React.Component<IPriorityBannerH
   private readonly _createList = async (): Promise<void> => {
     this.setState({
       hostState: 'creating',
+      errorDetails: undefined,
       incompatibleFields: undefined,
       message: undefined,
       missingFields: undefined
@@ -170,7 +173,7 @@ export default class PriorityBannerHost extends React.Component<IPriorityBannerH
   };
 
   private readonly _repairList = async (): Promise<void> => {
-    this.setState({ hostState: 'repairing', message: undefined });
+    this.setState({ errorDetails: undefined, hostState: 'repairing', message: undefined });
 
     try {
       await this.props.service.repairStandardList(
@@ -190,6 +193,7 @@ export default class PriorityBannerHost extends React.Component<IPriorityBannerH
   private async _load(): Promise<void> {
     this.setState({
       hostState: 'loading',
+      errorDetails: undefined,
       incompatibleFields: undefined,
       message: undefined,
       missingFields: undefined
@@ -227,6 +231,7 @@ export default class PriorityBannerHost extends React.Component<IPriorityBannerH
       : undefined;
     this.setState({
       hostState: statusCode === 401 || statusCode === 403 ? 'permission' : 'error',
+      errorDetails: error instanceof Error ? error.message : undefined,
       incompatibleFields: undefined,
       message: undefined,
       missingFields: undefined

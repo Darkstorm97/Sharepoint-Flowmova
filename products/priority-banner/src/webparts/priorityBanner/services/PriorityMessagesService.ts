@@ -225,6 +225,32 @@ async function ensureSuccess(response: SPHttpClientResponse, message: string): P
   }
 
   const responseText: string = await response.text();
-  const details: string = responseText ? ` ${responseText.slice(0, 500)}` : '';
-  throw new PriorityMessagesServiceError(`${message}${details}`, response.status);
+  const responseDetails: string = extractSharePointError(responseText);
+  const details: string = responseDetails ? ` ${responseDetails.slice(0, 350)}` : '';
+  throw new PriorityMessagesServiceError(
+    `${message} HTTP ${response.status}.${details}`,
+    response.status
+  );
+}
+
+function extractSharePointError(responseText: string): string {
+  if (!responseText) {
+    return '';
+  }
+
+  try {
+    const payload: {
+      error?: { message?: string | { value?: string } };
+      'odata.error'?: { message?: { value?: string } };
+    } = JSON.parse(responseText);
+    const modernMessage: string | { value?: string } | undefined = payload.error?.message;
+
+    if (typeof modernMessage === 'string') {
+      return modernMessage;
+    }
+
+    return modernMessage?.value || payload['odata.error']?.message?.value || responseText;
+  } catch {
+    return responseText;
+  }
 }
