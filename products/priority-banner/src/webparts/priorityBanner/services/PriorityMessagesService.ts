@@ -156,7 +156,7 @@ export class PriorityMessagesService implements IPriorityMessagesService {
   ): Promise<void> {
     for (const definition of definitions) {
       const fieldResponse: SPHttpClientResponse = await this._spHttpClient.post(
-        `${listEndpoint}/fields/createfieldasxml`,
+        `${listEndpoint}/fields/createFieldAsXml`,
         SPHttpClient.configurations.v1,
         {
           body: JSON.stringify({
