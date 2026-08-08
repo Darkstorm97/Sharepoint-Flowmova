@@ -10,15 +10,15 @@ Le dépôt est un monorepo de travail. Chaque composant reste néanmoins un prod
 
 ## État du projet
 
-Le projet est actuellement dans sa phase de cadrage. Aucun composant n'a encore été sélectionné ou développé.
+Le projet est actuellement dans sa phase de cadrage. Une première étude de marché et une grille de candidats sont disponibles, mais aucun composant commercial n'a encore été sélectionné ou développé.
 
 Un laboratoire SPFx indépendant est disponible dans `prototypes/spfx-environment-check`. Il valide l'environnement technique sans constituer un produit commercial.
 
 Les prochaines étapes sont :
 
 1. valider le cadre de travail global ;
-2. identifier plusieurs besoins réels rencontrés par les entreprises ;
-3. comparer les composants candidats ;
+2. valider les besoins prioritaires auprès de PME ;
+3. ajuster le classement des composants candidats avec les résultats des entretiens ;
 4. choisir un premier MVP compatible avec une publication sur le Store ;
 5. définir son architecture avant de commencer le développement.
 
@@ -44,5 +44,7 @@ Les prochaines étapes sont :
 - utilisation d'Azure uniquement lorsqu'une fonctionnalité le nécessite réellement.
 
 Voir [les principes fondamentaux](docs/02-cadre-global/principes-fondamentaux.md) pour le cadre complet.
+
+Consulter l'[étude de marché initiale](docs/03-etude-des-besoins/etude-marche-initiale.md) et la [grille des applications candidates](docs/04-selection-composant/grille-candidats.md).
 
 L'[environnement Microsoft 365 de développement](docs/05-architecture/environnement-tenant.md) est configuré et vérifié pour les futurs essais SPFx.
