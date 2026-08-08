@@ -20,6 +20,8 @@ Le Lot 3 ajoute :
 - la détection de la liste standard `Lists/PriorityMessages` ;
 - la création guidée de la liste et de ses colonnes par un propriétaire de site ;
 - la validation du schéma avant la lecture ;
+- la réparation non destructive des colonnes absentes ;
+- le blocage explicite lorsqu’une colonne existante possède un type incompatible ;
 - la lecture et la validation des messages avec `SPHttpClient` ;
 - la sélection cohérente d’une version française ou anglaise complète ;
 - les états chargement, configuration requise, création, liste vide, schéma incompatible, permission insuffisante et erreur temporaire.
@@ -87,7 +89,7 @@ Le package généré et les dépendances ne sont pas suivis par Git.
 - aucune vulnérabilité connue dans les dépendances de production selon `npm audit --omit=dev`.
 - bundle de développement vérifié avec la classe `PriorityBannerWebPart` ;
 - package de production nettoyé de toute ressource de rechargement à chaud.
-- quatre tests unitaires réussis pour la transformation, la langue de secours et le rejet des données invalides ;
+- sept tests unitaires réussis pour le schéma, la transformation, la langue de secours et le rejet des données invalides ;
 - aucune permission Microsoft Graph ni dépendance Azure ajoutée.
 
 La création réelle de la liste et la lecture d’un premier élément doivent maintenant être confirmées dans le tenant de développement.

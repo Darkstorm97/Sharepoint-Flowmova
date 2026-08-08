@@ -17,6 +17,11 @@ declare interface IPriorityBannerWebPartStrings {
   EmptyTitle: string;
   EmptyDescription: string;
   OpenListButton: string;
+  RepairTitle: string;
+  RepairDescription: string;
+  RepairButton: string;
+  RepairingTitle: string;
+  RepairingDescription: string;
   IncompatibleTitle: string;
   IncompatibleDescription: string;
   PermissionTitle: string;

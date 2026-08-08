@@ -2,6 +2,13 @@ import {
   SPHttpClient,
   type SPHttpClientResponse
 } from '@microsoft/sp-http';
+import {
+  analyzePriorityListSchema,
+  type IPriorityFieldDefinition,
+  type IPriorityListSchemaAnalysis,
+  type ISharePointFieldInfo,
+  priorityFieldDefinitions
+} from '../domain/PriorityListSchema';
 import { mapPriorityMessage } from '../domain/PriorityMessageMapper';
 import type { IPriorityMessage } from '../models/IPriorityMessage';
 import type { ISharePointPriorityMessageItem } from '../models/ISharePointPriorityMessageItem';
@@ -13,40 +20,12 @@ interface IODataCollection<T> {
   value: T[];
 }
 
-interface ISharePointFieldInfo {
-  InternalName: string;
+interface ICreatedListPayload {
+  Id?: string;
+  d?: { Id?: string };
 }
 
 const listInternalName: string = 'PriorityMessages';
-const requiredFieldNames: readonly string[] = [
-  'TitleFr',
-  'TitleEn',
-  'MessageFr',
-  'MessageEn',
-  'ActionLabelFr',
-  'ActionLabelEn',
-  'ActionUrl',
-  'Priority',
-  'StartDateTime',
-  'EndDateTime',
-  'IsEnabled',
-  'AllowDismiss'
-];
-
-const fieldSchemas: readonly string[] = [
-  '<Field Type="Text" Name="TitleFr" StaticName="TitleFr" DisplayName="Titre français" MaxLength="255" AddToDefaultView="TRUE" />',
-  '<Field Type="Text" Name="TitleEn" StaticName="TitleEn" DisplayName="English title" MaxLength="255" AddToDefaultView="TRUE" />',
-  '<Field Type="Note" Name="MessageFr" StaticName="MessageFr" DisplayName="Message français" NumLines="6" RichText="FALSE" AddToDefaultView="TRUE" />',
-  '<Field Type="Note" Name="MessageEn" StaticName="MessageEn" DisplayName="English message" NumLines="6" RichText="FALSE" AddToDefaultView="TRUE" />',
-  '<Field Type="Text" Name="ActionLabelFr" StaticName="ActionLabelFr" DisplayName="Action française" MaxLength="120" />',
-  '<Field Type="Text" Name="ActionLabelEn" StaticName="ActionLabelEn" DisplayName="English action" MaxLength="120" />',
-  '<Field Type="URL" Name="ActionUrl" StaticName="ActionUrl" DisplayName="Action URL" Format="Hyperlink" />',
-  '<Field Type="Choice" Name="Priority" StaticName="Priority" DisplayName="Priority" Required="TRUE" Indexed="TRUE" AddToDefaultView="TRUE"><CHOICES><CHOICE>Information</CHOICE><CHOICE>Important</CHOICE><CHOICE>Urgent</CHOICE><CHOICE>Critical</CHOICE></CHOICES><Default>Information</Default></Field>',
-  '<Field Type="DateTime" Name="StartDateTime" StaticName="StartDateTime" DisplayName="Start date and time" Required="TRUE" Indexed="TRUE" Format="DateTime" StorageTZ="UTC" AddToDefaultView="TRUE" />',
-  '<Field Type="DateTime" Name="EndDateTime" StaticName="EndDateTime" DisplayName="End date and time" Required="TRUE" Indexed="TRUE" Format="DateTime" StorageTZ="UTC" AddToDefaultView="TRUE" />',
-  '<Field Type="Boolean" Name="IsEnabled" StaticName="IsEnabled" DisplayName="Enabled" Required="TRUE" Indexed="TRUE" AddToDefaultView="TRUE"><Default>1</Default></Field>',
-  '<Field Type="Boolean" Name="AllowDismiss" StaticName="AllowDismiss" DisplayName="Allow dismissal" Required="TRUE" AddToDefaultView="TRUE"><Default>1</Default></Field>'
-];
 
 export class PriorityMessagesService implements IPriorityMessagesService {
   public readonly listUrl: string;
@@ -72,30 +51,35 @@ export class PriorityMessagesService implements IPriorityMessagesService {
     );
 
     if (listResponse.status === 404) {
-      return { listUrl: this.listUrl, missingFields: [], status: 'missing' };
+      return {
+        incompatibleFields: [],
+        listUrl: this.listUrl,
+        missingFields: [],
+        status: 'missing'
+      };
     }
 
     await ensureSuccess(listResponse, 'Unable to inspect the Priority Messages list.');
 
     const fieldsResponse: SPHttpClientResponse = await this._spHttpClient.get(
-      `${this._listEndpoint}/fields?$select=InternalName`,
+      `${this._listEndpoint}/fields?$select=InternalName,TypeAsString`,
       SPHttpClient.configurations.v1,
       { headers: { Accept: 'application/json;odata=nometadata' } }
     );
     await ensureSuccess(fieldsResponse, 'Unable to inspect the Priority Messages fields.');
 
     const payload: IODataCollection<ISharePointFieldInfo> = await fieldsResponse.json();
-    const availableFields: Set<string> = new Set<string>(
-      payload.value.map((field: ISharePointFieldInfo) => field.InternalName)
-    );
-    const missingFields: string[] = requiredFieldNames.filter(
-      (fieldName: string) => !availableFields.has(fieldName)
-    );
+    const analysis: IPriorityListSchemaAnalysis = analyzePriorityListSchema(payload.value);
 
     return {
+      incompatibleFields: analysis.incompatibleFields,
       listUrl: this.listUrl,
-      missingFields,
-      status: missingFields.length > 0 ? 'incompatible' : 'ready'
+      missingFields: analysis.missingFields,
+      status: analysis.incompatibleFields.length > 0
+        ? 'incompatible'
+        : analysis.missingFields.length > 0
+          ? 'repairable'
+          : 'ready'
     };
   }
 
@@ -114,37 +98,37 @@ export class PriorityMessagesService implements IPriorityMessagesService {
     );
     await ensureSuccess(createResponse, 'Unable to create the Priority Messages list.');
 
-    for (const schemaXml of fieldSchemas) {
-      const fieldResponse: SPHttpClientResponse = await this._spHttpClient.post(
-        `${this._listEndpoint}/fields/createfieldasxml`,
-        SPHttpClient.configurations.v1,
-        {
-          body: JSON.stringify({
-            parameters: {
-              __metadata: { type: 'SP.XmlSchemaFieldCreationInformation' },
-              Options: 0,
-              SchemaXml: schemaXml
-            }
-          }),
-          headers: verboseJsonHeaders()
-        }
-      );
-      await ensureSuccess(fieldResponse, 'Unable to create a Priority Messages field.');
+    const createdList: ICreatedListPayload = await createResponse.json();
+    const listId: string | undefined = createdList.Id || createdList.d?.Id;
+    const createdListEndpoint: string = listId && isGuid(listId)
+      ? `${this._webAbsoluteUrl}/_api/web/lists(guid'${listId}')`
+      : this._listEndpoint;
+
+    await this._createFields(createdListEndpoint, priorityFieldDefinitions);
+    await this._updateList(createdListEndpoint, displayTitle, description);
+  }
+
+  public async repairStandardList(displayTitle: string, description: string): Promise<void> {
+    const configuration: IPriorityListConfiguration = await this.getConfiguration();
+
+    if (configuration.status === 'missing') {
+      await this.createStandardList(displayTitle, description);
+      return;
     }
 
-    const renameResponse: SPHttpClientResponse = await this._spHttpClient.post(
-      this._listEndpoint,
-      SPHttpClient.configurations.v1,
-      {
-        body: JSON.stringify({ Description: description, Title: displayTitle }),
-        headers: {
-          ...jsonHeaders(),
-          'IF-MATCH': '*',
-          'X-HTTP-Method': 'MERGE'
-        }
-      }
+    if (configuration.incompatibleFields.length > 0) {
+      throw new PriorityMessagesServiceError(
+        'Existing fields have incompatible types and cannot be replaced automatically.',
+        409
+      );
+    }
+
+    const missingDefinitions: IPriorityFieldDefinition[] = priorityFieldDefinitions.filter(
+      (definition: IPriorityFieldDefinition) => configuration.missingFields.indexOf(definition.internalName) >= 0
     );
-    await ensureSuccess(renameResponse, 'Unable to localize the Priority Messages list title.');
+
+    await this._createFields(this._listEndpoint, missingDefinitions);
+    await this._updateList(this._listEndpoint, displayTitle, description);
   }
 
   public async getMessages(): Promise<IPriorityMessage[]> {
@@ -165,10 +149,60 @@ export class PriorityMessagesService implements IPriorityMessagesService {
       .map(mapPriorityMessage)
       .filter((message: IPriorityMessage | undefined): message is IPriorityMessage => Boolean(message));
   }
+
+  private async _createFields(
+    listEndpoint: string,
+    definitions: readonly IPriorityFieldDefinition[]
+  ): Promise<void> {
+    for (const definition of definitions) {
+      const fieldResponse: SPHttpClientResponse = await this._spHttpClient.post(
+        `${listEndpoint}/fields/createfieldasxml`,
+        SPHttpClient.configurations.v1,
+        {
+          body: JSON.stringify({
+            parameters: {
+              __metadata: { type: 'SP.XmlSchemaFieldCreationInformation' },
+              Options: 0,
+              SchemaXml: definition.schemaXml
+            }
+          }),
+          headers: verboseJsonHeaders()
+        }
+      );
+      await ensureSuccess(
+        fieldResponse,
+        `Unable to create the ${definition.internalName} field.`
+      );
+    }
+  }
+
+  private async _updateList(
+    listEndpoint: string,
+    displayTitle: string,
+    description: string
+  ): Promise<void> {
+    const response: SPHttpClientResponse = await this._spHttpClient.post(
+      listEndpoint,
+      SPHttpClient.configurations.v1,
+      {
+        body: JSON.stringify({ Description: description, Title: displayTitle }),
+        headers: {
+          ...jsonHeaders(),
+          'IF-MATCH': '*',
+          'X-HTTP-Method': 'MERGE'
+        }
+      }
+    );
+    await ensureSuccess(response, 'Unable to update the Priority Messages list.');
+  }
 }
 
 function escapeOData(value: string): string {
   return value.replace(/'/g, "''");
+}
+
+function isGuid(value: string): boolean {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
 }
 
 function jsonHeaders(): Record<string, string> {
@@ -190,5 +224,7 @@ async function ensureSuccess(response: SPHttpClientResponse, message: string): P
     return;
   }
 
-  throw new PriorityMessagesServiceError(message, response.status);
+  const responseText: string = await response.text();
+  const details: string = responseText ? ` ${responseText.slice(0, 500)}` : '';
+  throw new PriorityMessagesServiceError(`${message}${details}`, response.status);
 }

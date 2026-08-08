@@ -23,6 +23,11 @@ export interface IPriorityBannerHostLabels {
   permissionDescription: string;
   permissionTitle: string;
   priorityLabels: Record<PriorityLevel, string>;
+  repairButton: string;
+  repairDescription: string;
+  repairingDescription: string;
+  repairingTitle: string;
+  repairTitle: string;
   retryButton: string;
 }
 

@@ -7,10 +7,11 @@ import PriorityBanner from './PriorityBanner';
 import type { IPriorityBannerHostProps } from './IPriorityBannerHostProps';
 import PriorityBannerStatus from './PriorityBannerStatus';
 
-type HostState = 'creating' | 'empty' | 'error' | 'incompatible' | 'loading' | 'missing' | 'permission' | 'ready';
+type HostState = 'creating' | 'empty' | 'error' | 'incompatible' | 'loading' | 'missing' | 'permission' | 'ready' | 'repairable' | 'repairing';
 
 interface IPriorityBannerHostState {
   hostState: HostState;
+  incompatibleFields?: string[];
   message?: ILocalizedPriorityMessage;
   missingFields?: string[];
 }
@@ -26,7 +27,7 @@ export default class PriorityBannerHost extends React.Component<IPriorityBannerH
 
   public render(): React.ReactElement {
     const { labels, layout, service } = this.props;
-    const { hostState, message, missingFields } = this.state;
+    const { hostState, incompatibleFields, message, missingFields } = this.state;
 
     if (hostState === 'ready' && message) {
       return (
@@ -69,11 +70,37 @@ export default class PriorityBannerHost extends React.Component<IPriorityBannerH
       );
     }
 
+    if (hostState === 'repairable') {
+      return (
+        <PriorityBannerStatus
+          actionLabel={labels.repairButton}
+          description={labels.repairDescription}
+          details={missingFields?.join(', ')}
+          iconName="Repair"
+          onAction={this._repairList}
+          title={labels.repairTitle}
+        />
+      );
+    }
+
+    if (hostState === 'repairing') {
+      return (
+        <PriorityBannerStatus
+          actionLabel={labels.repairButton}
+          description={labels.repairingDescription}
+          disabled
+          iconName="Sync"
+          onAction={this._repairList}
+          title={labels.repairingTitle}
+        />
+      );
+    }
+
     if (hostState === 'incompatible') {
       return (
         <PriorityBannerStatus
           description={labels.incompatibleDescription}
-          details={missingFields?.join(', ')}
+          details={incompatibleFields?.join(', ')}
           iconName="Warning"
           title={labels.incompatibleTitle}
         />
@@ -124,10 +151,29 @@ export default class PriorityBannerHost extends React.Component<IPriorityBannerH
   }
 
   private readonly _createList = async (): Promise<void> => {
-    this.setState({ hostState: 'creating', message: undefined, missingFields: undefined });
+    this.setState({
+      hostState: 'creating',
+      incompatibleFields: undefined,
+      message: undefined,
+      missingFields: undefined
+    });
 
     try {
       await this.props.service.createStandardList(
+        this.props.labels.listDisplayTitle,
+        this.props.labels.listDescription
+      );
+      await this._load();
+    } catch (error: unknown) {
+      this._setErrorState(error);
+    }
+  };
+
+  private readonly _repairList = async (): Promise<void> => {
+    this.setState({ hostState: 'repairing', message: undefined });
+
+    try {
+      await this.props.service.repairStandardList(
         this.props.labels.listDisplayTitle,
         this.props.labels.listDescription
       );
@@ -142,13 +188,19 @@ export default class PriorityBannerHost extends React.Component<IPriorityBannerH
   };
 
   private async _load(): Promise<void> {
-    this.setState({ hostState: 'loading', message: undefined, missingFields: undefined });
+    this.setState({
+      hostState: 'loading',
+      incompatibleFields: undefined,
+      message: undefined,
+      missingFields: undefined
+    });
 
     try {
       const configuration: IPriorityListConfiguration = await this.props.service.getConfiguration();
       if (configuration.status !== 'ready') {
         this.setState({
           hostState: configuration.status,
+          incompatibleFields: configuration.incompatibleFields,
           missingFields: configuration.missingFields
         });
         return;
@@ -175,7 +227,9 @@ export default class PriorityBannerHost extends React.Component<IPriorityBannerH
       : undefined;
     this.setState({
       hostState: statusCode === 401 || statusCode === 403 ? 'permission' : 'error',
-      message: undefined
+      incompatibleFields: undefined,
+      message: undefined,
+      missingFields: undefined
     });
   }
 }

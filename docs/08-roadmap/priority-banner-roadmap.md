@@ -25,6 +25,8 @@ Cette feuille de route découpe le MVP en lots courts, vérifiables et déployab
 
 - modèle de message ;
 - création et validation de la liste de configuration ;
+- réparation idempotente des colonnes manquantes sans suppression de données ;
+- détection des types de colonnes incompatibles ;
 - lecture des messages avec `SPHttpClient` ;
 - états de chargement, absence de contenu et erreur.
 

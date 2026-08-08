@@ -85,6 +85,8 @@ Le Web Part fournit un assistant permettant à un propriétaire de site :
 1. de sélectionner une liste compatible du site courant ;
 2. ou de créer la liste standard en une action.
 
+Si la liste standard existe mais que des colonnes sont absentes, l'assistant propose une réparation non destructive. Cette réparation ajoute uniquement les colonnes manquantes, peut être relancée sans dommage et ne supprime aucun élément ni aucune colonne. Une colonne existante dont le type est incompatible n'est jamais remplacée automatiquement : le composant affiche alors les détails nécessaires à une intervention administrative.
+
 La création s'exécute dans le contexte de l'utilisateur courant et nécessite donc ses permissions SharePoint habituelles de gestion des listes. Le composant affiche des instructions lorsque ces permissions sont insuffisantes.
 
 Le provisionnement automatique d'une liste avec la fonctionnalité du package SPFx reste une solution de repli à réévaluer après les tests d'installation. Il n'est pas retenu pour le premier développement afin d'éviter de créer une ressource non désirée sur chaque site.
@@ -196,6 +198,7 @@ Le composant gère explicitement :
 - les permissions insuffisantes ;
 - la liste absente ;
 - le schéma incompatible ;
+- le schéma réparable lorsqu'il manque uniquement des colonnes ;
 - l'absence de message actif ;
 - les quatre niveaux de priorité ;
 - le message fermé ;

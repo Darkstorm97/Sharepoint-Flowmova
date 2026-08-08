@@ -6,4 +6,5 @@ export interface IPriorityMessagesService {
   createStandardList(displayTitle: string, description: string): Promise<void>;
   getConfiguration(): Promise<IPriorityListConfiguration>;
   getMessages(): Promise<IPriorityMessage[]>;
+  repairStandardList(displayTitle: string, description: string): Promise<void>;
 }

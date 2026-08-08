@@ -62,6 +62,11 @@ export default class PriorityBannerWebPart extends BaseClientSideWebPart<IPriori
         [PriorityLevel.Urgent]: strings.PriorityUrgent,
         [PriorityLevel.Critical]: strings.PriorityCritical
       },
+      repairButton: strings.RepairButton,
+      repairDescription: strings.RepairDescription,
+      repairingDescription: strings.RepairingDescription,
+      repairingTitle: strings.RepairingTitle,
+      repairTitle: strings.RepairTitle,
       retryButton: strings.RetryButton
     };
     const element: React.ReactElement<IPriorityBannerHostProps> = React.createElement(
