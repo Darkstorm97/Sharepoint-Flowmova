@@ -1,4 +1,5 @@
 import {
+  isPriorityMessageActive,
   localizePriorityMessage,
   mapPriorityMessage
 } from '../domain/PriorityMessageMapper';
@@ -62,5 +63,34 @@ describe('PriorityMessageMapper', () => {
       TitleEn: '',
       TitleFr: ''
     })).toBeUndefined();
+  });
+
+  it('supplies simple-form defaults when advanced values are empty', () => {
+    const message = mapPriorityMessage({
+      ...validItem,
+      ActionLabelEn: '',
+      ActionLabelFr: '',
+      AllowDismiss: undefined,
+      EndDateTime: undefined,
+      IsEnabled: undefined,
+      Priority: undefined,
+      StartDateTime: undefined
+    });
+
+    expect(message).toBeDefined();
+    expect(message?.priority).toBe(PriorityLevel.Information);
+    expect(message?.isEnabled).toBe(true);
+    expect(message?.allowDismiss).toBe(true);
+    expect(message?.startDateTime.getTime()).toBe(0);
+    expect(localizePriorityMessage(message!, true)?.actionText).toBe('En savoir plus');
+    expect(localizePriorityMessage(message!, false)?.actionText).toBe('Learn more');
+  });
+
+  it('only activates enabled messages inside their optional schedule', () => {
+    const message = mapPriorityMessage(validItem)!;
+
+    expect(isPriorityMessageActive(message, new Date('2026-08-09T12:00:00Z'))).toBe(true);
+    expect(isPriorityMessageActive(message, new Date('2026-08-11T12:00:00Z'))).toBe(false);
+    expect(isPriorityMessageActive({ ...message, isEnabled: false }, new Date('2026-08-09T12:00:00Z'))).toBe(false);
   });
 });

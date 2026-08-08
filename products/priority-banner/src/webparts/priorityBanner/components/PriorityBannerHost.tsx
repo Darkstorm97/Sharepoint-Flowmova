@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { localizePriorityMessage } from '../domain/PriorityMessageMapper';
+import {
+  isPriorityMessageActive,
+  localizePriorityMessage
+} from '../domain/PriorityMessageMapper';
 import type { ILocalizedPriorityMessage, IPriorityMessage } from '../models/IPriorityMessage';
 import type { IPriorityListConfiguration } from '../models/PriorityListStatus';
 import { PriorityMessagesServiceError } from '../services/PriorityMessagesServiceError';
@@ -211,8 +214,9 @@ export default class PriorityBannerHost extends React.Component<IPriorityBannerH
       }
 
       const messages: IPriorityMessage[] = await this.props.service.getMessages();
+      const now: Date = new Date();
       const localizedMessage: ILocalizedPriorityMessage | undefined = messages
-        .filter((message: IPriorityMessage) => message.isEnabled)
+        .filter((message: IPriorityMessage) => isPriorityMessageActive(message, now))
         .map((message: IPriorityMessage) => localizePriorityMessage(message, this.props.useFrench))
         .find((message: ILocalizedPriorityMessage | undefined): message is ILocalizedPriorityMessage => Boolean(message));
 

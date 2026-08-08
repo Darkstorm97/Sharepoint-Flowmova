@@ -7,7 +7,8 @@ import {
   type IPriorityFieldDefinition,
   type IPriorityListSchemaAnalysis,
   type ISharePointFieldInfo,
-  priorityFieldDefinitions
+  priorityFieldDefinitions,
+  priorityFormConfiguration
 } from '../domain/PriorityListSchema';
 import { mapPriorityMessage } from '../domain/PriorityMessageMapper';
 import type { IPriorityMessage } from '../models/IPriorityMessage';
@@ -65,7 +66,7 @@ export class PriorityMessagesService implements IPriorityMessagesService {
     await ensureSuccess(listResponse, 'Unable to inspect the Priority Messages list.');
 
     const fieldsResponse: SPHttpClientResponse = await this._spHttpClient.get(
-      `${this._listEndpoint}/fields?$select=InternalName,TypeAsString`,
+      `${this._listEndpoint}/fields?$select=InternalName,TypeAsString,Required,ShowInEditForm,ShowInNewForm,Title`,
       SPHttpClient.configurations.v1,
       { headers: { Accept: 'application/json;odata=nometadata' } }
     );
@@ -80,7 +81,7 @@ export class PriorityMessagesService implements IPriorityMessagesService {
       missingFields: analysis.missingFields,
       status: analysis.incompatibleFields.length > 0
         ? 'incompatible'
-        : analysis.missingFields.length > 0
+        : analysis.missingFields.length > 0 || analysis.formConfigurationNeedsUpdate
           ? 'repairable'
           : 'ready'
     };
@@ -108,6 +109,7 @@ export class PriorityMessagesService implements IPriorityMessagesService {
       : this._listEndpoint;
 
     await this._createFields(createdListEndpoint, priorityFieldDefinitions);
+    await this._configureSimplifiedForm(createdListEndpoint);
     await this._updateList(createdListEndpoint, displayTitle, description);
   }
 
@@ -131,6 +133,7 @@ export class PriorityMessagesService implements IPriorityMessagesService {
     );
 
     await this._createFields(this._listEndpoint, missingDefinitions);
+    await this._configureSimplifiedForm(this._listEndpoint);
     await this._updateList(this._listEndpoint, displayTitle, description);
   }
 
@@ -196,6 +199,38 @@ export class PriorityMessagesService implements IPriorityMessagesService {
       }
     );
     await ensureSuccess(response, 'Unable to update the Priority Messages list.');
+  }
+
+  private async _configureSimplifiedForm(listEndpoint: string): Promise<void> {
+    for (const configuration of priorityFormConfiguration) {
+      const fieldEndpoint: string = `${listEndpoint}/fields/getByInternalNameOrTitle('${escapeOData(configuration.internalName)}')`;
+      const body: Record<string, boolean | string> = {
+        Required: configuration.required,
+        ShowInEditForm: configuration.showInForms,
+        ShowInNewForm: configuration.showInForms
+      };
+
+      if (configuration.title) {
+        body.Title = configuration.title;
+      }
+
+      const response: SPHttpClientResponse = await this._spHttpClient.post(
+        fieldEndpoint,
+        SPHttpClient.configurations.v1,
+        {
+          body: JSON.stringify(body),
+          headers: {
+            ...jsonHeaders(),
+            'IF-MATCH': '*',
+            'X-HTTP-Method': 'MERGE'
+          }
+        }
+      );
+      await ensureSuccess(
+        response,
+        `Unable to simplify the ${configuration.internalName} field.`
+      );
+    }
   }
 }
 

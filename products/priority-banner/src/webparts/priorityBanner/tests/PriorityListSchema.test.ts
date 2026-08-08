@@ -1,6 +1,7 @@
 import {
   analyzePriorityListSchema,
-  priorityFieldDefinitions
+  priorityFieldDefinitions,
+  priorityFormConfiguration
 } from '../domain/PriorityListSchema';
 
 describe('PriorityListSchema', () => {
@@ -25,12 +26,23 @@ describe('PriorityListSchema', () => {
   });
 
   it('accepts a complete compatible schema', () => {
-    const fields = priorityFieldDefinitions.map((definition) => ({
-      InternalName: definition.internalName,
-      TypeAsString: definition.typeAsString
-    }));
+    const fields = priorityFormConfiguration.map((configuration) => {
+      const definition = priorityFieldDefinitions.find(
+        (field) => field.internalName === configuration.internalName
+      );
+
+      return {
+        InternalName: configuration.internalName,
+        Required: configuration.required,
+        ShowInEditForm: configuration.showInForms,
+        ShowInNewForm: configuration.showInForms,
+        Title: configuration.title || configuration.internalName,
+        TypeAsString: definition?.typeAsString || 'Text'
+      };
+    });
 
     expect(analyzePriorityListSchema(fields)).toEqual({
+      formConfigurationNeedsUpdate: false,
       incompatibleFields: [],
       missingFields: []
     });
@@ -40,5 +52,28 @@ describe('PriorityListSchema', () => {
     for (const definition of priorityFieldDefinitions) {
       expect(definition.schemaXml).not.toContain('Indexed="TRUE"');
     }
+  });
+
+  it('hides advanced fields from the standard SharePoint form', () => {
+    const hiddenFields = ['ActionLabelFr', 'ActionLabelEn', 'StartDateTime', 'IsEnabled', 'AllowDismiss'];
+
+    for (const internalName of hiddenFields) {
+      const definition = priorityFieldDefinitions.find((field) => field.internalName === internalName);
+      expect(definition?.schemaXml).toContain('ShowInNewForm="FALSE"');
+      expect(definition?.schemaXml).toContain('ShowInEditForm="FALSE"');
+    }
+  });
+
+  it('detects an existing list that still uses the long technical form', () => {
+    const fields = priorityFieldDefinitions.map((definition) => ({
+      InternalName: definition.internalName,
+      Required: false,
+      ShowInEditForm: true,
+      ShowInNewForm: true,
+      Title: definition.internalName,
+      TypeAsString: definition.typeAsString
+    }));
+
+    expect(analyzePriorityListSchema(fields).formConfigurationNeedsUpdate).toBe(true);
   });
 });
