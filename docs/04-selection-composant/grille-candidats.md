@@ -20,6 +20,8 @@ Chaque idée est notée sur 100 à partir des critères déjà définis dans le 
 
 Les notes sont des hypothèses de travail fondées sur l'[étude de marché initiale](../03-etude-des-besoins/etude-marche-initiale.md). Elles devront être corrigées après les entretiens clients.
 
+Cette grille compare principalement les applications métier pouvant devenir un premier produit autonome. Elle ne limite pas le [catalogue produit initial](catalogue-produit-initial.md), qui comprend aussi des composants génériques d'esthétique, de contenu et d'engagement pour les intranets.
+
 ## Classement
 
 | Rang | Application candidate | Score | Valeur principale | Risque principal |
@@ -94,12 +96,12 @@ Les notes sont des hypothèses de travail fondées sur l'[étude de marché init
 
 **Pourquoi il n'est pas premier :** la valeur est forte, mais plusieurs produits du Marketplace proposent déjà un périmètre similaire. Il faudrait une différenciation nette par la simplicité, le prix, le multilingue ou un secteur précis.
 
-## Candidats à ne pas commencer en premier
+## Applications métier à ne pas commencer en premier
 
 - **Annuaire :** facile à démontrer, mais de nombreux produits offrent déjà recherche, filtres, organigramme et intégration Teams.
 - **Calendrier :** utile mais souvent perçu comme une amélioration visuelle plutôt qu'une solution à un risque métier.
 - **Onboarding générique :** besoin réel, mais Microsoft fournit un modèle Lists et des concurrents proposent déjà des suites très complètes.
-- **FAQ générique :** MVP simple, mais barrière à l'entrée et volonté de payer faibles sans contenu ou intelligence spécialisée.
+- **FAQ générique vendue seule :** MVP simple, mais barrière à l'entrée et volonté de payer faibles. Elle reste pertinente comme composant du Intranet Starter Pack.
 - **Tableau de bord KPI générique :** la valeur dépend d'intégrations multiples et entre directement en concurrence avec Power BI.
 
 ## Recommandation pour l'étape suivante
