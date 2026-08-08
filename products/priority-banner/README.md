@@ -4,7 +4,7 @@ Priority Banner est un Web Part SharePoint Framework publié par Flowmova. Il af
 
 ## État
 
-Les lots 1 et 2 mettent en place la fondation indépendante du produit et une expérience visuelle configurable. La liste SharePoint, la sélection dynamique des messages et la fermeture persistante ne sont pas encore implémentées.
+Les lots 1 à 3 mettent en place la fondation indépendante, l’expérience visuelle et la connexion aux données SharePoint. La sélection programmée des messages et la fermeture persistante ne sont pas encore implémentées.
 
 Le Web Part propose actuellement :
 
@@ -14,6 +14,15 @@ Le Web Part propose actuellement :
 - une action facultative avec validation du lien ;
 - une fermeture facultative pour la session d’affichage courante ;
 - un panneau de propriétés bilingue et un comportement responsive.
+
+Le Lot 3 ajoute :
+
+- la détection de la liste standard `Lists/PriorityMessages` ;
+- la création guidée de la liste et de ses colonnes par un propriétaire de site ;
+- la validation du schéma avant la lecture ;
+- la lecture et la validation des messages avec `SPHttpClient` ;
+- la sélection cohérente d’une version française ou anglaise complète ;
+- les états chargement, configuration requise, création, liste vide, schéma incompatible, permission insuffisante et erreur temporaire.
 
 ## Identité
 
@@ -69,7 +78,7 @@ sharepoint/solution/priority-banner.sppkg
 
 Le package généré et les dépendances ne sont pas suivis par Git.
 
-## Validation des lots 1 et 2
+## Validation des lots 1 à 3
 
 - compilation TypeScript, Sass, ESLint et Webpack réussie ;
 - package SharePoint de production généré avec succès ;
@@ -78,3 +87,7 @@ Le package généré et les dépendances ne sont pas suivis par Git.
 - aucune vulnérabilité connue dans les dépendances de production selon `npm audit --omit=dev`.
 - bundle de développement vérifié avec la classe `PriorityBannerWebPart` ;
 - package de production nettoyé de toute ressource de rechargement à chaud.
+- quatre tests unitaires réussis pour la transformation, la langue de secours et le rejet des données invalides ;
+- aucune permission Microsoft Graph ni dépendance Azure ajoutée.
+
+La création réelle de la liste et la lecture d’un premier élément doivent maintenant être confirmées dans le tenant de développement.

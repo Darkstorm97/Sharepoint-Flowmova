@@ -1,25 +1,33 @@
 declare interface IPriorityBannerWebPartStrings {
   PropertyPaneDescription: string;
-  PreviewTitle: string;
-  PreviewMessage: string;
-  DismissLabel: string;
-  ContentGroupName: string;
-  TitleFieldLabel: string;
-  MessageFieldLabel: string;
-  PriorityFieldLabel: string;
+  DisplayGroupName: string;
   LayoutFieldLabel: string;
-  ActionGroupName: string;
-  ActionTextFieldLabel: string;
-  ActionUrlFieldLabel: string;
-  ShowDismissFieldLabel: string;
+  LayoutStandard: string;
+  LayoutCompact: string;
+  DismissLabel: string;
   PriorityInformation: string;
   PriorityImportant: string;
   PriorityUrgent: string;
   PriorityCritical: string;
-  LayoutStandard: string;
-  LayoutCompact: string;
-  ToggleYes: string;
-  ToggleNo: string;
+  ConfigurationTitle: string;
+  ConfigurationDescription: string;
+  CreateButton: string;
+  CreatingTitle: string;
+  CreatingDescription: string;
+  EmptyTitle: string;
+  EmptyDescription: string;
+  OpenListButton: string;
+  IncompatibleTitle: string;
+  IncompatibleDescription: string;
+  PermissionTitle: string;
+  PermissionDescription: string;
+  ErrorTitle: string;
+  ErrorDescription: string;
+  RetryButton: string;
+  LoadingTitle: string;
+  LoadingDescription: string;
+  ListDisplayTitle: string;
+  ListDescription: string;
 }
 
 declare module 'PriorityBannerWebPartStrings' {

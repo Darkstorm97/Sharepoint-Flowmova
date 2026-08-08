@@ -34,13 +34,7 @@
     },
     "officeFabricIconFontName": "Megaphone",
     "properties": {
-      "actionText": "",
-      "actionUrl": "",
-      "layout": "standard",
-      "message": "This is a configurable preview of Priority Banner.",
-      "priority": "information",
-      "showDismiss": true,
-      "title": "Scheduled maintenance"
+      "layout": "standard"
     }
   }]
 }

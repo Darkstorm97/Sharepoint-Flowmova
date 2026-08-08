@@ -3,54 +3,74 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneDropdown,
-  PropertyPaneTextField,
-  PropertyPaneToggle
+  PropertyPaneDropdown
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'PriorityBannerWebPartStrings';
-import PriorityBanner from './components/PriorityBanner';
-import { IPriorityBannerProps } from './components/IPriorityBannerProps';
+import PriorityBannerHost from './components/PriorityBannerHost';
+import type {
+  IPriorityBannerHostLabels,
+  IPriorityBannerHostProps
+} from './components/IPriorityBannerHostProps';
 import { BannerLayout } from './domain/BannerLayout';
 import { PriorityLevel } from './domain/PriorityLevel';
+import { PriorityMessagesService } from './services/PriorityMessagesService';
 
 export interface IPriorityBannerWebPartProps {
-  actionText: string;
-  actionUrl: string;
   layout: BannerLayout;
-  message: string;
-  priority: PriorityLevel;
-  showDismiss: boolean;
-  title: string;
 }
 
 export default class PriorityBannerWebPart extends BaseClientSideWebPart<IPriorityBannerWebPartProps> {
+  private _messagesService!: PriorityMessagesService;
+
   protected onInit(): Promise<void> {
-    this.properties.title ||= strings.PreviewTitle;
-    this.properties.message ||= strings.PreviewMessage;
-    this.properties.priority ||= PriorityLevel.Information;
     this.properties.layout ||= BannerLayout.Standard;
-    this.properties.actionText ??= '';
-    this.properties.actionUrl ??= '';
-    this.properties.showDismiss ??= true;
+    this._messagesService = new PriorityMessagesService(
+      this.context.spHttpClient,
+      this.context.pageContext.web.absoluteUrl,
+      this.context.pageContext.web.serverRelativeUrl
+    );
 
     return Promise.resolve();
   }
 
   public render(): void {
-    const element: React.ReactElement<IPriorityBannerProps> = React.createElement(
-      PriorityBanner,
+    const labels: IPriorityBannerHostLabels = {
+      configurationDescription: strings.ConfigurationDescription,
+      configurationTitle: strings.ConfigurationTitle,
+      createButton: strings.CreateButton,
+      creatingDescription: strings.CreatingDescription,
+      creatingTitle: strings.CreatingTitle,
+      dismissLabel: strings.DismissLabel,
+      emptyDescription: strings.EmptyDescription,
+      emptyTitle: strings.EmptyTitle,
+      errorDescription: strings.ErrorDescription,
+      errorTitle: strings.ErrorTitle,
+      incompatibleDescription: strings.IncompatibleDescription,
+      incompatibleTitle: strings.IncompatibleTitle,
+      listDescription: strings.ListDescription,
+      listDisplayTitle: strings.ListDisplayTitle,
+      loadingDescription: strings.LoadingDescription,
+      loadingTitle: strings.LoadingTitle,
+      openListButton: strings.OpenListButton,
+      permissionDescription: strings.PermissionDescription,
+      permissionTitle: strings.PermissionTitle,
+      priorityLabels: {
+        [PriorityLevel.Information]: strings.PriorityInformation,
+        [PriorityLevel.Important]: strings.PriorityImportant,
+        [PriorityLevel.Urgent]: strings.PriorityUrgent,
+        [PriorityLevel.Critical]: strings.PriorityCritical
+      },
+      retryButton: strings.RetryButton
+    };
+    const element: React.ReactElement<IPriorityBannerHostProps> = React.createElement(
+      PriorityBannerHost,
       {
-        actionText: this.properties.actionText,
-        actionUrl: this.properties.actionUrl,
-        dismissLabel: strings.DismissLabel,
+        labels,
         layout: this.properties.layout,
-        message: this.properties.message,
-        priority: this.properties.priority,
-        priorityLabel: this._getPriorityLabel(this.properties.priority),
-        showDismiss: this.properties.showDismiss,
-        title: this.properties.title
+        service: this._messagesService,
+        useFrench: this.context.pageContext.cultureInfo.currentUICultureName.toLowerCase().startsWith('fr')
       }
     );
 
@@ -74,48 +94,14 @@ export default class PriorityBannerWebPart extends BaseClientSideWebPart<IPriori
           },
           groups: [
             {
-              groupName: strings.ContentGroupName,
+              groupName: strings.DisplayGroupName,
               groupFields: [
-                PropertyPaneTextField('title', {
-                  label: strings.TitleFieldLabel
-                }),
-                PropertyPaneTextField('message', {
-                  label: strings.MessageFieldLabel,
-                  multiline: true,
-                  rows: 3
-                }),
-                PropertyPaneDropdown('priority', {
-                  label: strings.PriorityFieldLabel,
-                  options: [
-                    { key: PriorityLevel.Information, text: strings.PriorityInformation },
-                    { key: PriorityLevel.Important, text: strings.PriorityImportant },
-                    { key: PriorityLevel.Urgent, text: strings.PriorityUrgent },
-                    { key: PriorityLevel.Critical, text: strings.PriorityCritical }
-                  ]
-                }),
                 PropertyPaneDropdown('layout', {
                   label: strings.LayoutFieldLabel,
                   options: [
                     { key: BannerLayout.Standard, text: strings.LayoutStandard },
                     { key: BannerLayout.Compact, text: strings.LayoutCompact }
                   ]
-                })
-              ]
-            },
-            {
-              groupName: strings.ActionGroupName,
-              groupFields: [
-                PropertyPaneTextField('actionText', {
-                  label: strings.ActionTextFieldLabel
-                }),
-                PropertyPaneTextField('actionUrl', {
-                  label: strings.ActionUrlFieldLabel,
-                  placeholder: 'https://'
-                }),
-                PropertyPaneToggle('showDismiss', {
-                  label: strings.ShowDismissFieldLabel,
-                  onText: strings.ToggleYes,
-                  offText: strings.ToggleNo
                 })
               ]
             }
@@ -125,14 +111,4 @@ export default class PriorityBannerWebPart extends BaseClientSideWebPart<IPriori
     };
   }
 
-  private _getPriorityLabel(priority: PriorityLevel): string {
-    const labels: Record<PriorityLevel, string> = {
-      [PriorityLevel.Information]: strings.PriorityInformation,
-      [PriorityLevel.Important]: strings.PriorityImportant,
-      [PriorityLevel.Urgent]: strings.PriorityUrgent,
-      [PriorityLevel.Critical]: strings.PriorityCritical
-    };
-
-    return labels[priority];
-  }
 }

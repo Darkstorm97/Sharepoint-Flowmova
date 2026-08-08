@@ -21,7 +21,7 @@ Cette feuille de route découpe le MVP en lots courts, vérifiables et déployab
 - propriétés de prévisualisation bilingues dans le panneau du Web Part ;
 - validation des liens d’action avant leur affichage.
 
-## Lot 3 — Données SharePoint
+## Lot 3 — Données SharePoint — implémenté, validation tenant requise
 
 - modèle de message ;
 - création et validation de la liste de configuration ;

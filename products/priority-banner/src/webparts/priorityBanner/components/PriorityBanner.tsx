@@ -58,7 +58,7 @@ export default class PriorityBanner extends React.Component<IPriorityBannerProps
       <section
         className={`${styles.priorityBanner} ${priorityClassNames[priority]} ${layoutClassName}`}
         aria-label={priorityLabel}
-        role="status"
+        role={priority === PriorityLevel.Urgent || priority === PriorityLevel.Critical ? 'alert' : 'status'}
       >
         <div className={styles.icon} aria-hidden="true">
           <Icon iconName={priorityIconNames[priority]} />
