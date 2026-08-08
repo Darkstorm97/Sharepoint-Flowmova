@@ -45,6 +45,6 @@ Les prochaines étapes sont :
 
 Voir [les principes fondamentaux](docs/02-cadre-global/principes-fondamentaux.md) pour le cadre complet.
 
-Consulter l'[étude de marché initiale](docs/03-etude-des-besoins/etude-marche-initiale.md), la [grille des applications candidates](docs/04-selection-composant/grille-candidats.md) et le [catalogue produit initial](docs/04-selection-composant/catalogue-produit-initial.md).
+Consulter l'[étude de marché initiale](docs/03-etude-des-besoins/etude-marche-initiale.md), la [grille des applications candidates](docs/04-selection-composant/grille-candidats.md), le [catalogue produit initial](docs/04-selection-composant/catalogue-produit-initial.md) et les [conventions de localisation et de métadonnées](docs/06-store/conventions-localisation-metadonnees.md).
 
 L'[environnement Microsoft 365 de développement](docs/05-architecture/environnement-tenant.md) est configuré et vérifié pour les futurs essais SPFx.

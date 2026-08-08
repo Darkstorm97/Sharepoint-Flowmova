@@ -7,6 +7,9 @@ Ce document servira de liste de contrôle pour concevoir chaque composant en vue
 ## Contraintes initiales
 
 - Un package et une identité propres à chaque composant.
+- L'auteur et l'éditeur sont identifiés sous le nom exact `Flowmova` dans toutes les métadonnées.
+- Le nom, la description et la version restent cohérents entre le code, le package, l'App Catalog et le Store.
+- Le français et l'anglais sont inclus dans chaque première version publiable.
 - Une installation, une mise à jour et une désinstallation documentées.
 - Des permissions limitées et justifiées.
 - Aucun secret incorporé dans le package client.
@@ -15,6 +18,8 @@ Ce document servira de liste de contrôle pour concevoir chaque composant en vue
 - Des ressources visuelles, une description commerciale et une documentation propres au produit.
 - Une expérience stable, accessible et cohérente avec Microsoft 365.
 - Une procédure de test reproductible avant soumission.
+
+Voir les [conventions de localisation et de métadonnées](conventions-localisation-metadonnees.md) pour les règles applicables à tous les produits.
 
 ## Points à vérifier officiellement
 

@@ -36,6 +36,7 @@ Un client doit pouvoir installer un seul composant sans installer le reste de la
 - L'interface quotidienne ne doit pas afficher de publicité Flowmova.
 - Aucun logo Flowmova ni lien promotionnel ne doit être imposé dans l'espace de travail du client.
 - Le composant doit pouvoir adopter l'identité visuelle du client.
+- L'auteur et l'éditeur de tous les composants sont identifiés de manière cohérente sous le nom exact `Flowmova`.
 - Flowmova reste identifiable comme éditeur dans la fiche Store, les métadonnées techniques, la documentation, le support et les mentions légales.
 - Une éventuelle offre entièrement en marque blanche sera étudiée séparément.
 
@@ -61,10 +62,12 @@ Chaque composant doit être :
 - utile et fondé sur un besoin validé ;
 - performant et maintenable ;
 - configurable sans modification du code ;
-- accessible et multilingue ;
+- accessible et disponible en français et en anglais dès sa première version publiable ;
 - documenté pour l'administrateur et l'utilisateur ;
 - testable et observable ;
 - compatible avec les versions de SPFx et de Microsoft 365 officiellement ciblées.
+
+Les textes de l'interface, les métadonnées localisées et les formats régionaux suivent les [conventions de localisation et de métadonnées](../06-store/conventions-localisation-metadonnees.md).
 
 ## 8. Publication sur le Store
 

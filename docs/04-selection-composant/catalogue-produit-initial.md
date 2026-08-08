@@ -110,12 +110,15 @@ Tous les composants du catalogue devront :
 - ressembler à des fonctions naturelles de Microsoft 365 ;
 - suivre le thème SharePoint et permettre la personnalisation du client ;
 - rester utilisables sur ordinateur, tablette et mobile ;
-- respecter l'accessibilité et prévoir le multilingue ;
+- respecter l'accessibilité et fournir le français et l'anglais dès la première version publiable ;
 - offrir plusieurs dispositions visuelles prêtes à l'emploi ;
 - éviter toute publicité ou marque Flowmova dans l'usage quotidien ;
+- identifier systématiquement `Flowmova` comme auteur et éditeur dans les métadonnées, la fiche Store et la documentation ;
 - privilégier les listes et bibliothèques SharePoint pour les données ;
 - éviter les permissions étendues et les services externes non indispensables ;
 - être conçus dès le départ pour une publication individuelle sur le Store.
+
+Tous les produits appliquent les [conventions communes de localisation et de métadonnées](../06-store/conventions-localisation-metadonnees.md).
 
 ## Priorités à approfondir
 
