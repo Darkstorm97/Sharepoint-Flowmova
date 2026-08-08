@@ -12,6 +12,8 @@ Le dépôt est un monorepo de travail. Chaque composant reste néanmoins un prod
 
 Le projet est actuellement dans sa phase de cadrage. Aucun composant n'a encore été sélectionné ou développé.
 
+Un laboratoire SPFx indépendant est disponible dans `prototypes/spfx-environment-check`. Il valide l'environnement technique sans constituer un produit commercial.
+
 Les prochaines étapes sont :
 
 1. valider le cadre de travail global ;

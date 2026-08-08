@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-environment-check-client-side-solution",
+    "id": "69863321-6e39-4bae-a346-3939866a5b77",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-environment-check description"
+      },
+      "longDescription": {
+        "default": "spfx-environment-check description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-environment-check Feature",
+        "description": "The feature that activates elements of the spfx-environment-check solution.",
+        "id": "db22fc06-7c34-4cce-bfa1-74d9c59bff8e",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-environment-check.sppkg"
+  }
+}

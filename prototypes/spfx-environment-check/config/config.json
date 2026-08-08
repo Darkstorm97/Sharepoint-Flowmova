@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "environment-check-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/environmentCheck/EnvironmentCheckWebPart.js",
+          "manifest": "./src/webparts/environmentCheck/EnvironmentCheckWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "EnvironmentCheckWebPartStrings": "lib/webparts/environmentCheck/loc/{locale}.js"
+  }
+}

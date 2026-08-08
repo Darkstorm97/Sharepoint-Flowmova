@@ -49,8 +49,19 @@ Avant une publication, les tests devront aussi couvrir :
 
 ## Points restant à préparer
 
-- installer Node.js et l'outillage SPFx compatible ;
-- créer un projet technique minimal pour valider la chaîne locale ;
 - définir des comptes ou profils de test non administrateurs ;
 - documenter le processus de déploiement dans l'App Catalog ;
 - vérifier les exigences officielles du Store pour le composant sélectionné.
+
+## Laboratoire SPFx
+
+Le laboratoire `prototypes/spfx-environment-check` valide actuellement :
+
+- Node.js 22 LTS et SPFx 1.23.2 ;
+- la génération d'une Web Part React ;
+- la compilation avec Heft ;
+- le certificat HTTPS de développement ;
+- le chargement du manifeste local dans SharePoint ;
+- la création d'un package `.sppkg` de production.
+
+La prochaine validation consiste à téléverser ce package dans l'App Catalog, puis à l'installer uniquement sur le site de développement.

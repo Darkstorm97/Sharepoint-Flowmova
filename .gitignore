@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# SPFx and Heft generated output
+dist/
+lib/
+temp/
+release/
+sharepoint/solution/*.sppkg
+
+# Logs and local tooling
+*.log
+.heft/
+.rush/
+
+# Editors and operating systems
+.vscode/*.log
+.DS_Store
+Thumbs.db
