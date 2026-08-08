@@ -42,3 +42,5 @@ Les prochaines étapes sont :
 - utilisation d'Azure uniquement lorsqu'une fonctionnalité le nécessite réellement.
 
 Voir [les principes fondamentaux](docs/02-cadre-global/principes-fondamentaux.md) pour le cadre complet.
+
+L'[environnement Microsoft 365 de développement](docs/05-architecture/environnement-tenant.md) est configuré et vérifié pour les futurs essais SPFx.
