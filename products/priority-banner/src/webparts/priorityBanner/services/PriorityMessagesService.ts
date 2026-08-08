@@ -161,12 +161,11 @@ export class PriorityMessagesService implements IPriorityMessagesService {
         {
           body: JSON.stringify({
             parameters: {
-              __metadata: { type: 'SP.XmlSchemaFieldCreationInformation' },
               Options: 0,
               SchemaXml: definition.schemaXml
             }
           }),
-          headers: verboseJsonHeaders()
+          headers: jsonHeaders()
         }
       );
       await ensureSuccess(
@@ -209,13 +208,6 @@ function jsonHeaders(): Record<string, string> {
   return {
     Accept: 'application/json;odata=nometadata',
     'Content-Type': 'application/json;odata=nometadata'
-  };
-}
-
-function verboseJsonHeaders(): Record<string, string> {
-  return {
-    Accept: 'application/json;odata=verbose',
-    'Content-Type': 'application/json;odata=verbose'
   };
 }
 
