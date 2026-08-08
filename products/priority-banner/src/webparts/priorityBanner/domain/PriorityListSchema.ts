@@ -52,22 +52,22 @@ export const priorityFieldDefinitions: readonly IPriorityFieldDefinition[] = [
   },
   {
     internalName: 'Priority',
-    schemaXml: '<Field Type="Choice" Name="Priority" StaticName="Priority" DisplayName="Priority" Required="TRUE" Indexed="TRUE" AddToDefaultView="TRUE"><CHOICES><CHOICE>Information</CHOICE><CHOICE>Important</CHOICE><CHOICE>Urgent</CHOICE><CHOICE>Critical</CHOICE></CHOICES><Default>Information</Default></Field>',
+    schemaXml: '<Field Type="Choice" Name="Priority" StaticName="Priority" DisplayName="Priority" Required="TRUE" AddToDefaultView="TRUE"><CHOICES><CHOICE>Information</CHOICE><CHOICE>Important</CHOICE><CHOICE>Urgent</CHOICE><CHOICE>Critical</CHOICE></CHOICES><Default>Information</Default></Field>',
     typeAsString: 'Choice'
   },
   {
     internalName: 'StartDateTime',
-    schemaXml: '<Field Type="DateTime" Name="StartDateTime" StaticName="StartDateTime" DisplayName="Start date and time" Required="TRUE" Indexed="TRUE" Format="DateTime" StorageTZ="UTC" AddToDefaultView="TRUE" />',
+    schemaXml: '<Field Type="DateTime" Name="StartDateTime" StaticName="StartDateTime" DisplayName="Start date and time" Required="TRUE" Format="DateTime" StorageTZ="UTC" AddToDefaultView="TRUE" />',
     typeAsString: 'DateTime'
   },
   {
     internalName: 'EndDateTime',
-    schemaXml: '<Field Type="DateTime" Name="EndDateTime" StaticName="EndDateTime" DisplayName="End date and time" Required="TRUE" Indexed="TRUE" Format="DateTime" StorageTZ="UTC" AddToDefaultView="TRUE" />',
+    schemaXml: '<Field Type="DateTime" Name="EndDateTime" StaticName="EndDateTime" DisplayName="End date and time" Required="TRUE" Format="DateTime" StorageTZ="UTC" AddToDefaultView="TRUE" />',
     typeAsString: 'DateTime'
   },
   {
     internalName: 'IsEnabled',
-    schemaXml: '<Field Type="Boolean" Name="IsEnabled" StaticName="IsEnabled" DisplayName="Enabled" Required="TRUE" Indexed="TRUE" AddToDefaultView="TRUE"><Default>1</Default></Field>',
+    schemaXml: '<Field Type="Boolean" Name="IsEnabled" StaticName="IsEnabled" DisplayName="Enabled" Required="TRUE" AddToDefaultView="TRUE"><Default>1</Default></Field>',
     typeAsString: 'Boolean'
   },
   {

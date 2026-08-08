@@ -35,4 +35,10 @@ describe('PriorityListSchema', () => {
       missingFields: []
     });
   });
+
+  it('does not consume SharePoint list index slots during provisioning', () => {
+    for (const definition of priorityFieldDefinitions) {
+      expect(definition.schemaXml).not.toContain('Indexed="TRUE"');
+    }
+  });
 });
