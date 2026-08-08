@@ -28,8 +28,8 @@ export interface IPriorityFieldFormConfiguration {
 
 export const priorityFormConfiguration: readonly IPriorityFieldFormConfiguration[] = [
   { internalName: 'Title', required: false, showInForms: false },
-  { internalName: 'TitleFr', required: false, showInForms: true, title: 'Titre / Title' },
-  { internalName: 'MessageFr', required: false, showInForms: true, title: 'Message' },
+  { internalName: 'TitleFr', required: true, showInForms: true, title: 'Titre / Title' },
+  { internalName: 'MessageFr', required: true, showInForms: true, title: 'Message' },
   { internalName: 'Priority', required: true, showInForms: true, title: 'Priorité / Priority' },
   {
     internalName: 'EndDateTime',
@@ -65,12 +65,12 @@ export const priorityFormConfiguration: readonly IPriorityFieldFormConfiguration
 export const priorityFieldDefinitions: readonly IPriorityFieldDefinition[] = [
   {
     internalName: 'TitleFr',
-    schemaXml: '<Field Type="Text" Name="TitleFr" StaticName="TitleFr" DisplayName="Titre / Title" MaxLength="255" AddToDefaultView="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />',
+    schemaXml: '<Field Type="Text" Name="TitleFr" StaticName="TitleFr" DisplayName="Titre / Title" MaxLength="255" Required="TRUE" AddToDefaultView="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />',
     typeAsString: 'Text'
   },
   {
     internalName: 'MessageFr',
-    schemaXml: '<Field Type="Note" Name="MessageFr" StaticName="MessageFr" DisplayName="Message" NumLines="6" RichText="FALSE" AddToDefaultView="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />',
+    schemaXml: '<Field Type="Note" Name="MessageFr" StaticName="MessageFr" DisplayName="Message" NumLines="6" RichText="FALSE" Required="TRUE" AddToDefaultView="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />',
     typeAsString: 'Note'
   },
   {
@@ -154,8 +154,6 @@ export function analyzePriorityListSchema(
 
     if (
       field.Required !== configuration.required ||
-      field.ShowInEditForm !== configuration.showInForms ||
-      field.ShowInNewForm !== configuration.showInForms ||
       (configuration.title !== undefined && field.Title !== configuration.title)
     ) {
       formConfigurationNeedsUpdate = true;

@@ -30,6 +30,7 @@ const listInternalName: string = 'PriorityMessages';
 // SP.AddFieldOptions.AddFieldInternalNameHint. Without it, SharePoint derives
 // internal names from DisplayName and every repair attempt creates duplicates.
 const addFieldInternalNameHint: number = 8;
+const defaultViewFieldNames: readonly string[] = ['TitleFr', 'MessageFr', 'Priority'];
 
 export class PriorityMessagesService implements IPriorityMessagesService {
   public readonly listUrl: string;
@@ -110,6 +111,7 @@ export class PriorityMessagesService implements IPriorityMessagesService {
 
     await this._createFields(createdListEndpoint, priorityFieldDefinitions);
     await this._configureSimplifiedForm(createdListEndpoint);
+    await this._configureDefaultView(createdListEndpoint);
     await this._updateList(createdListEndpoint, displayTitle, description);
   }
 
@@ -134,6 +136,7 @@ export class PriorityMessagesService implements IPriorityMessagesService {
 
     await this._createFields(this._listEndpoint, missingDefinitions);
     await this._configureSimplifiedForm(this._listEndpoint);
+    await this._configureDefaultView(this._listEndpoint);
     await this._updateList(this._listEndpoint, displayTitle, description);
   }
 
@@ -247,6 +250,28 @@ export class PriorityMessagesService implements IPriorityMessagesService {
       await ensureSuccess(
         editFormResponse,
         `Unable to configure the ${configuration.internalName} field for the edit form.`
+      );
+    }
+  }
+
+  private async _configureDefaultView(listEndpoint: string): Promise<void> {
+    const viewFieldsEndpoint: string = `${listEndpoint}/DefaultView/ViewFields`;
+    const clearResponse: SPHttpClientResponse = await this._spHttpClient.post(
+      `${viewFieldsEndpoint}/removeAllViewFields()`,
+      SPHttpClient.configurations.v1,
+      { headers: jsonHeaders() }
+    );
+    await ensureSuccess(clearResponse, 'Unable to simplify the default list view.');
+
+    for (const internalName of defaultViewFieldNames) {
+      const addResponse: SPHttpClientResponse = await this._spHttpClient.post(
+        `${viewFieldsEndpoint}/addViewField('${escapeOData(internalName)}')`,
+        SPHttpClient.configurations.v1,
+        { headers: jsonHeaders() }
+      );
+      await ensureSuccess(
+        addResponse,
+        `Unable to add the ${internalName} field to the default list view.`
       );
     }
   }
