@@ -1,0 +1,43 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "priority-banner-client-side-solution",
+    "id": "32ee54f0-a3fa-4bbc-bba7-96315bc91745",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Flowmova",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Display time-bound priority messages on SharePoint pages.",
+        "fr-fr": "Affichez des messages prioritaires programmés dans les pages SharePoint.",
+        "fr-ca": "Affichez des messages prioritaires programmés dans les pages SharePoint."
+      },
+      "longDescription": {
+        "default": "Priority Banner helps organizations display clear, accessible and time-bound priority messages on modern SharePoint pages.",
+        "fr-fr": "Priority Banner aide les organisations à afficher des messages prioritaires clairs, accessibles et programmés dans les pages SharePoint modernes.",
+        "fr-ca": "Priority Banner aide les organisations à afficher des messages prioritaires clairs, accessibles et programmés dans les pages SharePoint modernes."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": ["Productivity"]
+    },
+    "features": [
+      {
+        "title": "Priority Banner",
+        "description": "Activates the Priority Banner web part.",
+        "id": "3670925d-093e-48c0-96be-5a491cba34e9",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/priority-banner.sppkg"
+  }
+}

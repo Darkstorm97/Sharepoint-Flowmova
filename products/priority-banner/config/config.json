@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "priority-banner-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/priorityBanner/PriorityBannerWebPart.js",
+          "manifest": "./src/webparts/priorityBanner/PriorityBannerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PriorityBannerWebPartStrings": "lib/webparts/priorityBanner/loc/{locale}.js"
+  }
+}

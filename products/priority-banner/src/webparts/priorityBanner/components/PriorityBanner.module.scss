@@ -1,0 +1,89 @@
+.priorityBanner {
+  align-items: center;
+  background: "[theme:themeLighterAlt, default: #eff6fc]";
+  border: 1px solid "[theme:themePrimary, default: #0f6cbd]";
+  border-radius: 8px;
+  color: "[theme:bodyText, default: #242424]";
+  display: flex;
+  gap: 16px;
+  min-height: 88px;
+  padding: 18px 20px;
+}
+
+.icon {
+  align-items: center;
+  background: "[theme:themePrimary, default: #0f6cbd]";
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  flex: 0 0 40px;
+  font-size: 20px;
+  height: 40px;
+  justify-content: center;
+}
+
+.content {
+  min-width: 0;
+}
+
+.priorityLabel {
+  color: "[theme:themeDark, default: #0c3b5e]";
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 16px;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  margin: 0;
+}
+
+.message {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 2px 0 0;
+}
+
+.information {
+  border-color: "[theme:themePrimary, default: #0f6cbd]";
+}
+
+.important {
+  background: #fff8e8;
+  border-color: #bc6f00;
+}
+
+.urgent {
+  background: #fff3f0;
+  border-color: #d83b01;
+}
+
+.critical {
+  background: #fde7e9;
+  border-color: #a4262c;
+}
+
+@media (max-width: 480px) {
+  .priorityBanner {
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .icon {
+    flex-basis: 32px;
+    font-size: 16px;
+    height: 32px;
+  }
+
+  .title {
+    font-size: 17px;
+    line-height: 24px;
+  }
+}
