@@ -75,7 +75,9 @@ Le `.sppkg` est un artefact généré et n'est pas suivi par Git.
 - affichage de la Web Part dans SharePoint : validé ;
 - build de production : réussi ;
 - création et validation du `.sppkg` : réussies ;
-- déploiement dans l'App Catalog : à valider.
+- téléversement et activation dans l'App Catalog : réussis ;
+- installation de l'application sur le site de développement : réussie ;
+- ajout de la Web Part sur une page SharePoint moderne : réussi.
 
 ## Limites
 

@@ -62,6 +62,9 @@ Le laboratoire `prototypes/spfx-environment-check` valide actuellement :
 - la compilation avec Heft ;
 - le certificat HTTPS de développement ;
 - le chargement du manifeste local dans SharePoint ;
-- la création d'un package `.sppkg` de production.
+- la création d'un package `.sppkg` de production ;
+- le téléversement et l'activation du package dans l'App Catalog ;
+- l'installation ciblée sur le site de développement ;
+- l'ajout de la Web Part sur une page SharePoint moderne.
 
-La prochaine validation consiste à téléverser ce package dans l'App Catalog, puis à l'installer uniquement sur le site de développement.
+La chaîne technique locale vers SharePoint est validée. Le laboratoire ne doit pas être publié sur le Store : il sert uniquement de référence pour les futurs composants.
