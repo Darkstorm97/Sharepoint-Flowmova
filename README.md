@@ -10,17 +10,16 @@ Le dépôt est un monorepo de travail. Chaque composant reste néanmoins un prod
 
 ## État du projet
 
-Le projet est entré dans sa phase de réalisation. **Priority Banner** a été sélectionné comme premier composant et son lot 1 est terminé : projet SPFx autonome, identité Flowmova, localisation initiale, structure applicative et premier bandeau statique.
+Le projet est entré dans sa phase de réalisation. **Priority Banner** a été sélectionné comme premier composant et ses lots 1 et 2 sont terminés : projet SPFx autonome, identité Flowmova, localisation, structure applicative, formats Standard et Compact, quatre niveaux de priorité et panneau de configuration.
 
 Un laboratoire SPFx indépendant est disponible dans `prototypes/spfx-environment-check`. Il valide l'environnement technique sans constituer un produit commercial.
 
 Les prochaines étapes sont :
 
-1. développer les formats visuels Standard et Compact ;
-2. implémenter le modèle de données et la liste SharePoint ;
-3. ajouter la sélection dynamique et la fermeture persistante ;
-4. tester le MVP complet dans le tenant ;
-5. préparer son package et son dossier de publication Store.
+1. implémenter le modèle de données et la liste SharePoint ;
+2. ajouter la sélection dynamique et la fermeture persistante ;
+3. tester le MVP complet dans le tenant ;
+4. préparer son package et son dossier de publication Store.
 
 ## Organisation
 

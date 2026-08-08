@@ -4,7 +4,16 @@ Priority Banner est un Web Part SharePoint Framework publié par Flowmova. Il af
 
 ## État
 
-Le lot 1 met en place la fondation indépendante du produit et un premier bandeau statique. La liste SharePoint, la sélection dynamique des messages et la fermeture persistante ne sont pas encore implémentées.
+Les lots 1 et 2 mettent en place la fondation indépendante du produit et une expérience visuelle configurable. La liste SharePoint, la sélection dynamique des messages et la fermeture persistante ne sont pas encore implémentées.
+
+Le Web Part propose actuellement :
+
+- les formats Standard et Compact ;
+- les niveaux Information, Important, Urgent et Critique ;
+- un titre et un message configurables ;
+- une action facultative avec validation du lien ;
+- une fermeture facultative pour la session d’affichage courante ;
+- un panneau de propriétés bilingue et un comportement responsive.
 
 ## Identité
 
@@ -60,12 +69,12 @@ sharepoint/solution/priority-banner.sppkg
 
 Le package généré et les dépendances ne sont pas suivis par Git.
 
-## Validation du lot 1
+## Validation des lots 1 et 2
 
 - compilation TypeScript, Sass, ESLint et Webpack réussie ;
 - package SharePoint de production généré avec succès ;
 - ressources `en-US`, `en-CA`, `fr-FR` et `fr-CA` incluses ;
 - métadonnées Flowmova et identifiants propres au produit vérifiés ;
 - aucune vulnérabilité connue dans les dépendances de production selon `npm audit --omit=dev`.
-
-Le rendu dans le Workbench SharePoint reste à confirmer manuellement après approbation du certificat HTTPS de développement sur le poste.
+- bundle de développement vérifié avec la classe `PriorityBannerWebPart` ;
+- package de production nettoyé de toute ressource de rechargement à chaud.

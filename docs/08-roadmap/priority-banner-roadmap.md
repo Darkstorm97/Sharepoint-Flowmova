@@ -12,12 +12,14 @@ Cette feuille de route découpe le MVP en lots courts, vérifiables et déployab
 - premier bandeau statique ;
 - build et package de production validés.
 
-## Lot 2 — Expérience visuelle
+## Lot 2 — Expérience visuelle — terminé
 
 - formats Standard et Compact ;
 - niveaux Information, Important, Urgent et Critique ;
 - comportement responsive et accessible ;
-- propriétés de prévisualisation dans le panneau du Web Part.
+- titre, message, action et fermeture configurables ;
+- propriétés de prévisualisation bilingues dans le panneau du Web Part ;
+- validation des liens d’action avant leur affichage.
 
 ## Lot 3 — Données SharePoint
 
