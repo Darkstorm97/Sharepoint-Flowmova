@@ -26,6 +26,9 @@ interface ICreatedListPayload {
 }
 
 const listInternalName: string = 'PriorityMessages';
+// SP.AddFieldOptions.AddFieldInternalNameHint. Without it, SharePoint derives
+// internal names from DisplayName and every repair attempt creates duplicates.
+const addFieldInternalNameHint: number = 8;
 
 export class PriorityMessagesService implements IPriorityMessagesService {
   public readonly listUrl: string;
@@ -161,7 +164,7 @@ export class PriorityMessagesService implements IPriorityMessagesService {
         {
           body: JSON.stringify({
             parameters: {
-              Options: 0,
+              Options: addFieldInternalNameHint,
               SchemaXml: definition.schemaXml
             }
           }),
