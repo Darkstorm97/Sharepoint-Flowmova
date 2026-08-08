@@ -1,4 +1,4 @@
-# Communication Banner — fiche du MVP
+# Priority Banner — fiche du MVP
 
 Statut : validé
 
@@ -10,8 +10,10 @@ Gamme : Intranet Starter Pack
 
 ## Nom du produit
 
-- nom international : **Communication Banner** ;
-- nom français : **Bandeau de communication**.
+- nom international : **Priority Banner** ;
+- nom français : **Bandeau prioritaire**.
+
+Le nom est volontairement indépendant du contexte d'utilisation. Le produit peut être utilisé dans un intranet, un site d'équipe, un portail de projet, un extranet ou un site de service.
 
 Le nom final utilisé dans le Store devra rester cohérent avec les manifestes, le package et la documentation.
 

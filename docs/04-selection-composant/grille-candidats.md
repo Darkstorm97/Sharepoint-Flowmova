@@ -112,4 +112,4 @@ Cette grille continue de guider la validation des futures applications métier. 
 2. suivi des certifications, permis et formations ;
 3. suivi léger des audits et actions correctives.
 
-Depuis cette analyse, [Communication Banner a été sélectionné](communication-banner-mvp.md) comme premier produit de la gamme Intranet Starter Pack afin de commencer par un composant utile, visible et techniquement limité. Cette décision ne remplace pas la validation terrain nécessaire avant de sélectionner la première application métier de conformité.
+Depuis cette analyse, [Priority Banner a été sélectionné](priority-banner-mvp.md) comme premier produit de la gamme Intranet Starter Pack afin de commencer par un composant utile, visible et techniquement limité. Cette décision ne remplace pas la validation terrain nécessaire avant de sélectionner la première application métier de conformité.

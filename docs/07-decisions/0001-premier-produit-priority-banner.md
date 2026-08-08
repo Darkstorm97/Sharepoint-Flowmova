@@ -1,4 +1,4 @@
-# 0001 — Sélection de Communication Banner comme premier produit
+# 0001 — Sélection de Priority Banner comme premier produit
 
 Statut : acceptée
 
@@ -10,9 +10,11 @@ Le catalogue comprend des composants de personnalisation d'intranet et des appli
 
 ## Décision
 
-Le premier produit sera **Communication Banner**, ou **Bandeau de communication** en français, publié par `Flowmova` dans la gamme Intranet Starter Pack.
+Le premier produit sera **Priority Banner**, ou **Bandeau prioritaire** en français, publié par `Flowmova` dans la gamme Intranet Starter Pack.
 
-Son [périmètre MVP](../04-selection-composant/communication-banner-mvp.md) est validé. Il s'agit d'un Web Part SPFx alimenté par une liste SharePoint, sans backend Azure ni permission Microsoft Graph étendue.
+Le nom de travail initial, Communication Banner, a été remplacé afin de ne pas associer le produit uniquement à un intranet ou à un service de communications.
+
+Son [périmètre MVP](../04-selection-composant/priority-banner-mvp.md) est validé. Il s'agit d'un Web Part SPFx alimenté par une liste SharePoint, sans backend Azure ni permission Microsoft Graph étendue.
 
 ## Raisons
 
@@ -25,7 +27,7 @@ Son [périmètre MVP](../04-selection-composant/communication-banner-mvp.md) est
 
 ## Conséquences
 
-- Communication Banner devient prioritaire pour la conception et le développement ;
+- Priority Banner devient prioritaire pour la conception et le développement ;
 - les autres composants du catalogue restent planifiés mais ne bloquent pas ce produit ;
 - la validation terrain des applications métier de conformité peut continuer en parallèle du catalogue ;
 - aucune fonction globale au tenant, de ciblage ou d'accusé de lecture n'entre dans le premier MVP.

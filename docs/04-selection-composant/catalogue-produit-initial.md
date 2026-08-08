@@ -37,11 +37,11 @@ Bannière principale avec images, messages, appels à l'action, rotation faculta
 
 Cartes de navigation avec icônes, catégories, couleurs, recherche facultative et adaptation au thème du client.
 
-### Communication Banner
+### Priority Banner
 
 Bandeau destiné aux communications importantes : information, avertissement, urgence ou interruption de service.
 
-**Premier produit sélectionné.** Son [périmètre MVP est validé](communication-banner-mvp.md).
+**Premier produit sélectionné.** Son [périmètre MVP est validé](priority-banner-mvp.md). Son nom générique lui permet d'être utilisé dans un intranet, un site d'équipe, un portail de projet, un extranet ou un site de service.
 
 Le premier périmètre envisagé comprend :
 
@@ -124,7 +124,7 @@ Tous les produits appliquent les [conventions communes de localisation et de mé
 
 ## Priorités du catalogue
 
-Communication Banner est le premier produit sélectionné pour la conception et le développement.
+Priority Banner est le premier produit sélectionné pour la conception et le développement.
 
 Les composants suivants restent candidats pour la suite :
 
@@ -134,4 +134,4 @@ Les composants suivants restent candidats pour la suite :
 4. Document Spotlight ;
 5. Request Launcher.
 
-Leur ordre sera décidé progressivement sans créer de dépendance avec Communication Banner.
+Leur ordre sera décidé progressivement sans créer de dépendance avec Priority Banner.
