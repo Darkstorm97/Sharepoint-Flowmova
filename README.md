@@ -10,17 +10,17 @@ Le dépôt est un monorepo de travail. Chaque composant reste néanmoins un prod
 
 ## État du projet
 
-Le projet est actuellement dans sa phase de cadrage. Une première étude de marché, une grille de candidats et un catalogue produit initial sont disponibles, mais aucun premier composant commercial n'a encore été sélectionné ou développé.
+Le projet est actuellement dans sa phase de cadrage produit. **Communication Banner** a été sélectionné comme premier composant et son périmètre MVP est validé. Le développement du produit n'a pas encore commencé.
 
 Un laboratoire SPFx indépendant est disponible dans `prototypes/spfx-environment-check`. Il valide l'environnement technique sans constituer un produit commercial.
 
 Les prochaines étapes sont :
 
-1. valider le cadre de travail global ;
-2. valider les besoins prioritaires auprès de PME ;
-3. ajuster le classement des composants candidats avec les résultats des entretiens ;
-4. choisir un premier MVP compatible avec une publication sur le Store ;
-5. définir son architecture avant de commencer le développement.
+1. définir l'architecture fonctionnelle et technique de Communication Banner ;
+2. valider sa maquette et son modèle de données ;
+3. créer son projet SPFx indépendant ;
+4. développer et tester le MVP dans le tenant ;
+5. préparer son package et son dossier de publication Store.
 
 ## Organisation
 
@@ -45,6 +45,6 @@ Les prochaines étapes sont :
 
 Voir [les principes fondamentaux](docs/02-cadre-global/principes-fondamentaux.md) pour le cadre complet.
 
-Consulter l'[étude de marché initiale](docs/03-etude-des-besoins/etude-marche-initiale.md), la [grille des applications candidates](docs/04-selection-composant/grille-candidats.md), le [catalogue produit initial](docs/04-selection-composant/catalogue-produit-initial.md) et les [conventions de localisation et de métadonnées](docs/06-store/conventions-localisation-metadonnees.md).
+Consulter l'[étude de marché initiale](docs/03-etude-des-besoins/etude-marche-initiale.md), la [grille des applications candidates](docs/04-selection-composant/grille-candidats.md), le [catalogue produit initial](docs/04-selection-composant/catalogue-produit-initial.md), la [fiche MVP de Communication Banner](docs/04-selection-composant/communication-banner-mvp.md) et les [conventions de localisation et de métadonnées](docs/06-store/conventions-localisation-metadonnees.md).
 
 L'[environnement Microsoft 365 de développement](docs/05-architecture/environnement-tenant.md) est configuré et vérifié pour les futurs essais SPFx.

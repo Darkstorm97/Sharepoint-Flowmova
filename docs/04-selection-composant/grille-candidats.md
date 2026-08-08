@@ -106,10 +106,10 @@ Cette grille compare principalement les applications métier pouvant devenir un 
 
 ## Recommandation pour l'étape suivante
 
-Ne pas encore figer le premier produit. Tester en priorité les trois hypothèses suivantes auprès de PME :
+Cette grille continue de guider la validation des futures applications métier. Tester en priorité les trois hypothèses suivantes auprès de PME :
 
 1. gestionnaire de révision et d'expiration documentaire ;
 2. suivi des certifications, permis et formations ;
 3. suivi léger des audits et actions correctives.
 
-Le premier MVP sera celui qui réunit un problème fréquent, une conséquence mesurable, un acheteur identifiable et une installation acceptable sans projet de conseil.
+Depuis cette analyse, [Communication Banner a été sélectionné](communication-banner-mvp.md) comme premier produit de la gamme Intranet Starter Pack afin de commencer par un composant utile, visible et techniquement limité. Cette décision ne remplace pas la validation terrain nécessaire avant de sélectionner la première application métier de conformité.

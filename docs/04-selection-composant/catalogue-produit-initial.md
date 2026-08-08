@@ -41,6 +41,8 @@ Cartes de navigation avec icônes, catégories, couleurs, recherche facultative 
 
 Bandeau destiné aux communications importantes : information, avertissement, urgence ou interruption de service.
 
+**Premier produit sélectionné.** Son [périmètre MVP est validé](communication-banner-mvp.md).
+
 Le premier périmètre envisagé comprend :
 
 - quatre niveaux de priorité ;
@@ -120,17 +122,16 @@ Tous les composants du catalogue devront :
 
 Tous les produits appliquent les [conventions communes de localisation et de métadonnées](../06-store/conventions-localisation-metadonnees.md).
 
-## Priorités à approfondir
+## Priorités du catalogue
 
-La composition du catalogue est validée, mais l'ordre de développement reste à décider.
+Communication Banner est le premier produit sélectionné pour la conception et le développement.
 
-Les premiers candidats à préciser sont :
+Les composants suivants restent candidats pour la suite :
 
 1. Quick Link Cards ;
-2. Communication Banner ;
-3. News Spotlight ;
-4. Celebrations & New Employees ;
-5. Document Spotlight ;
-6. Request Launcher.
+2. News Spotlight ;
+3. Celebrations & New Employees ;
+4. Document Spotlight ;
+5. Request Launcher.
 
-Le choix du premier composant nécessitera une fiche distincte précisant le besoin, le MVP, les données, les permissions, l'installation et les critères de publication.
+Leur ordre sera décidé progressivement sans créer de dépendance avec Communication Banner.
