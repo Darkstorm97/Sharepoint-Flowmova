@@ -205,9 +205,7 @@ export class PriorityMessagesService implements IPriorityMessagesService {
     for (const configuration of priorityFormConfiguration) {
       const fieldEndpoint: string = `${listEndpoint}/fields/getByInternalNameOrTitle('${escapeOData(configuration.internalName)}')`;
       const body: Record<string, boolean | string> = {
-        Required: configuration.required,
-        ShowInEditForm: configuration.showInForms,
-        ShowInNewForm: configuration.showInForms
+        Required: configuration.required
       };
 
       if (configuration.title) {
@@ -229,6 +227,26 @@ export class PriorityMessagesService implements IPriorityMessagesService {
       await ensureSuccess(
         response,
         `Unable to simplify the ${configuration.internalName} field.`
+      );
+
+      const newFormResponse: SPHttpClientResponse = await this._spHttpClient.post(
+        `${fieldEndpoint}/setShowInNewForm(${configuration.showInForms})`,
+        SPHttpClient.configurations.v1,
+        { headers: jsonHeaders() }
+      );
+      await ensureSuccess(
+        newFormResponse,
+        `Unable to configure the ${configuration.internalName} field for the new form.`
+      );
+
+      const editFormResponse: SPHttpClientResponse = await this._spHttpClient.post(
+        `${fieldEndpoint}/setShowInEditForm(${configuration.showInForms})`,
+        SPHttpClient.configurations.v1,
+        { headers: jsonHeaders() }
+      );
+      await ensureSuccess(
+        editFormResponse,
+        `Unable to configure the ${configuration.internalName} field for the edit form.`
       );
     }
   }
