@@ -78,7 +78,7 @@ Français : `alertes SharePoint`, `messages prioritaires`, `communication intern
 
 English: `SharePoint alerts`, `priority messages`, `internal communication`.
 
-## Ressources visuelles prévues
+## Ressources visuelles
 
 1. quatre niveaux en format Standard ;
 2. communications en format Compact ;
@@ -86,4 +86,6 @@ English: `SharePoint alerts`, `priority messages`, `internal communication`.
 4. expérience française et anglaise ;
 5. affichage mobile.
 
-L’image sociale du mini-site se trouve dans `website/assets/og.png`. Les captures Store restent à produire à partir d’une page SharePoint de démonstration.
+Les cinq captures Store en PNG de 1280 × 720 pixels sont disponibles dans `docs/06-store/assets/priority-banner`. Leurs légendes françaises et anglaises sont documentées dans le fichier `README.md` de ce répertoire.
+
+L’image sociale du mini-site se trouve dans `website/assets/og.png`.

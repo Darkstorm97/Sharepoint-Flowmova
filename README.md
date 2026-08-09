@@ -14,12 +14,12 @@ Le projet est entré dans sa phase de réalisation. **Priority Banner** a été 
 
 Un laboratoire SPFx indépendant est disponible dans `prototypes/spfx-environment-check`. Il valide l'environnement technique sans constituer un produit commercial.
 
-Les prochaines étapes sont :
+La validation dans le tenant, l’installation du package de production et la préparation des ressources visuelles Store sont terminées. Les prochaines étapes sont :
 
-1. valider plusieurs instances et les langues dans le tenant ;
-2. tester le MVP sur ordinateur, mobile, clavier et différents thèmes ;
-3. installer le package de production et valider une page publiée ;
-4. préparer le dossier de publication Store.
+1. créer et vérifier le compte éditeur Microsoft Marketplace dans Partner Center ;
+2. effectuer le contrôle final du package, des permissions et de la mise à jour ;
+3. créer la fiche Priority Banner et téléverser les ressources validées ;
+4. soumettre la livraison indépendante à la certification Microsoft.
 
 ## Organisation
 

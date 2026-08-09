@@ -3,7 +3,7 @@
 ## Lot 1 — Fondation SPFx — terminé
 
 - projet et package indépendants ;
-- métadonnées Flowmova ;
+- métadonnées FlowMova ;
 - ressources françaises et anglaises ;
 - premier rendu et build de production.
 
@@ -29,17 +29,17 @@
 - fermeture persistante locale et interdite pour le niveau Critique ;
 - tests unitaires des règles métier.
 
-## Lot 5 — Validation tenant et qualité — prochaine étape
+## Lot 5 — Validation tenant et qualité — terminé
 
 - tester les propriétés et plusieurs instances dans le Workbench ;
 - vérifier les cultures `fr-CA`, `fr-FR`, `en-CA` et `en-US` ;
 - tester ordinateur, tablette, mobile, clavier et thèmes ;
 - installer la mise à jour dans le tenant et valider une page publiée.
 
-## Lot 6 — Publication Store
+## Lot 6 — Publication Store — en cours
 
-- finaliser les informations éditeur, URL de support, confidentialité et conditions ;
-- produire les captures et descriptions Store ;
+- informations éditeur, URL de support, confidentialité et conditions finalisées ;
+- descriptions et cinq captures Store de 1280 × 720 pixels produites ;
 - contrôler le package, les permissions et le comportement de mise à jour ;
 - publier la livraison indépendante.
 
