@@ -1,6 +1,6 @@
 # Fiche Store — Priority Banner
 
-Statut : contenu préparé, publication GitHub Pages à valider
+Statut : contenu préparé, publication GitHub Pages validée
 
 Date : 9 août 2026
 

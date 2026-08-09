@@ -47,3 +47,5 @@ Voir [les principes fondamentaux](docs/02-cadre-global/principes-fondamentaux.md
 Consulter l'[étude de marché initiale](docs/03-etude-des-besoins/etude-marche-initiale.md), la [grille des applications candidates](docs/04-selection-composant/grille-candidats.md), le [catalogue produit initial](docs/04-selection-composant/catalogue-produit-initial.md), la [fiche MVP de Priority Banner](docs/04-selection-composant/priority-banner-mvp.md), son [architecture](docs/05-architecture/priority-banner-architecture.md) et les [conventions de localisation et de métadonnées](docs/06-store/conventions-localisation-metadonnees.md).
 
 L'[environnement Microsoft 365 de développement](docs/05-architecture/environnement-tenant.md) est configuré et vérifié pour les futurs essais SPFx.
+
+Le [mini-site public Flowmova](https://darkstorm97.github.io/Sharepoint-Flowmova/) regroupe la présentation de Priority Banner, le support, la politique de confidentialité et les conditions d’utilisation nécessaires à la préparation Store.
