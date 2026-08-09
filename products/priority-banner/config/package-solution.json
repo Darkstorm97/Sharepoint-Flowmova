@@ -1,9 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "priority-banner-client-side-solution",
+    "name": "Priority Banner",
     "id": "32ee54f0-a3fa-4bbc-bba7-96315bc91745",
-    "version": "1.0.0.0",
+    "version": "1.0.1.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {
@@ -33,7 +33,7 @@
         "title": "Priority Banner",
         "description": "Activates the Priority Banner web part.",
         "id": "3670925d-093e-48c0-96be-5a491cba34e9",
-        "version": "1.0.0.0"
+        "version": "1.0.1.0"
       }
     ]
   },
