@@ -1,52 +1,46 @@
 # Feuille de route — Priority Banner
 
-Cette feuille de route découpe le MVP en lots courts, vérifiables et déployables progressivement dans le tenant de développement.
-
 ## Lot 1 — Fondation SPFx — terminé
 
-- projet SPFx autonome dans `products/priority-banner` ;
-- identité, identifiants et métadonnées Flowmova ;
-- package indépendant `priority-banner.sppkg` ;
-- ressources `fr-CA`, `fr-FR`, `en-CA` et `en-US` ;
-- structure `components`, `domain`, `models`, `services`, `storage` et `tests` ;
-- premier bandeau statique ;
-- build et package de production validés.
+- projet et package indépendants ;
+- métadonnées Flowmova ;
+- ressources françaises et anglaises ;
+- premier rendu et build de production.
 
 ## Lot 2 — Expérience visuelle — terminé
 
 - formats Standard et Compact ;
-- niveaux Information, Important, Urgent et Critique ;
+- quatre niveaux de priorité ;
 - comportement responsive et accessible ;
-- titre, message, action et fermeture configurables ;
-- propriétés de prévisualisation bilingues dans le panneau du Web Part ;
-- validation des liens d’action avant leur affichage.
+- action facultative et URL validée.
 
-## Lot 3 — Données SharePoint — implémenté, validation tenant requise
+## Lot 3 — Configuration simple — terminé
 
-- modèle de message ;
-- création et validation de la liste de configuration ;
-- réparation idempotente des colonnes manquantes sans suppression de données ;
-- détection des types de colonnes incompatibles ;
-- lecture des messages avec `SPHttpClient` ;
-- états de chargement, absence de contenu et erreur.
+- une instance égale un message ;
+- contenu saisi dans le panneau de propriétés ;
+- plusieurs instances indépendantes sur une page ;
+- suppression de la dépendance à une liste SharePoint.
 
-## Lot 4 — Règles métier
+## Lot 4 — Langue, expiration et fermeture — terminé
 
-- dates de début et de fin ;
-- priorisation des messages actifs ;
-- ciblage initial prévu par le MVP ;
-- fermeture persistante dans le navigateur.
+- langue principale détectée automatiquement ;
+- traduction facultative et langue du visiteur détectée sans sélecteur ;
+- expiration facultative future, disparition automatique ;
+- fermeture persistante locale et interdite pour le niveau Critique ;
+- tests unitaires des règles métier.
 
-## Lot 5 — Qualité et administration
+## Lot 5 — Validation tenant et qualité — prochaine étape
 
-- assistant de configuration ;
-- tests unitaires des règles métier ;
-- tests d'accessibilité, de langues et de compatibilité ;
-- documentation d'installation et d'exploitation.
+- tester les propriétés et plusieurs instances dans le Workbench ;
+- vérifier les cultures `fr-CA`, `fr-FR`, `en-CA` et `en-US` ;
+- tester ordinateur, tablette, mobile, clavier et thèmes ;
+- installer la mise à jour dans le tenant et valider une page publiée.
 
-## Lot 6 — Publication
+## Lot 6 — Publication Store
 
-- validation complète dans le tenant ;
-- package de livraison indépendant ;
-- informations, captures et politique de confidentialité pour le Store ;
-- contrôle final des permissions et de la présence discrète de la marque.
+- finaliser les informations éditeur, URL de support, confidentialité et conditions ;
+- produire les captures et descriptions Store ;
+- contrôler le package, les permissions et le comportement de mise à jour ;
+- publier la livraison indépendante.
+
+Une gestion centralisée par liste reste une piste séparée pour un futur produit avancé « Message Center ».

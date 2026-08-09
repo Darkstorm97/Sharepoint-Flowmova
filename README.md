@@ -10,16 +10,16 @@ Le dépôt est un monorepo de travail. Chaque composant reste néanmoins un prod
 
 ## État du projet
 
-Le projet est entré dans sa phase de réalisation. **Priority Banner** a été sélectionné comme premier composant. Ses fondations, son expérience visuelle et son accès aux données SharePoint sont implémentés. Le Lot 3 doit maintenant être validé dans le tenant avec la création de la liste et un premier message.
+Le projet est entré dans sa phase de réalisation. **Priority Banner** a été sélectionné comme premier composant. Son MVP autonome permet maintenant de configurer directement un message par instance, sans liste SharePoint, avec expiration facultative, fermeture persistante et détection automatique du français ou de l’anglais.
 
 Un laboratoire SPFx indépendant est disponible dans `prototypes/spfx-environment-check`. Il valide l'environnement technique sans constituer un produit commercial.
 
 Les prochaines étapes sont :
 
-1. valider la création et la lecture de la liste dans le tenant ;
-2. ajouter la sélection dynamique et la fermeture persistante ;
-3. tester le MVP complet dans le tenant ;
-4. préparer son package et son dossier de publication Store.
+1. valider plusieurs instances et les langues dans le tenant ;
+2. tester le MVP sur ordinateur, mobile, clavier et différents thèmes ;
+3. installer le package de production et valider une page publiée ;
+4. préparer le dossier de publication Store.
 
 ## Organisation
 

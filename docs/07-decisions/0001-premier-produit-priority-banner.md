@@ -1,33 +1,25 @@
 # 0001 — Sélection de Priority Banner comme premier produit
 
-Statut : acceptée
-
-Date : 7 août 2026
-
-## Contexte
-
-Le catalogue comprend des composants de personnalisation d'intranet et des applications métier. Le premier développement doit démontrer le cycle complet d'un produit indépendant, de sa conception à sa publication sur le Store, avec un risque technique maîtrisé et une valeur visible pour une PME.
+Statut : acceptée, périmètre révisé le 8 août 2026
 
 ## Décision
 
-Le premier produit sera **Priority Banner**, ou **Bandeau prioritaire** en français, publié par `Flowmova` dans la gamme Intranet Starter Pack.
+Le premier produit est **Priority Banner**, ou **Bandeau prioritaire** en français, publié par `Flowmova` dans la gamme Intranet Starter Pack. Son nom générique lui permet de servir un intranet, un site d’équipe, un portail de projet, un extranet ou un site de service.
 
-Le nom de travail initial, Communication Banner, a été remplacé afin de ne pas associer le produit uniquement à un intranet ou à un service de communications.
-
-Son [périmètre MVP](../04-selection-composant/priority-banner-mvp.md) est validé. Il s'agit d'un Web Part SPFx alimenté par une liste SharePoint, sans backend Azure ni permission Microsoft Graph étendue.
+Le MVP est un Web Part SPFx autonome dans lequel chaque instance représente un message configuré directement sur la page. Il ne dépend d’aucune liste SharePoint, d’aucun backend Azure et d’aucune permission Microsoft Graph étendue.
 
 ## Raisons
 
-- besoin de communication interne simple à expliquer ;
-- valeur visuelle immédiate dans un intranet ;
-- périmètre compatible avec un premier MVP limité ;
-- données conservées dans le tenant du client ;
-- installation et démonstration simples ;
-- possibilités d'évolution sans les imposer au premier package.
+- besoin de communication simple et valeur visuelle immédiate ;
+- configuration rapide et compréhensible par une PME ;
+- plusieurs messages possibles en ajoutant plusieurs instances ;
+- aucun schéma de liste à installer, réparer ou maintenir ;
+- déploiement, démonstration et publication Store simples ;
+- langue et expiration prises en charge sans alourdir l’expérience.
 
 ## Conséquences
 
-- Priority Banner devient prioritaire pour la conception et le développement ;
-- les autres composants du catalogue restent planifiés mais ne bloquent pas ce produit ;
-- la validation terrain des applications métier de conformité peut continuer en parallèle du catalogue ;
-- aucune fonction globale au tenant, de ciblage ou d'accusé de lecture n'entre dans le premier MVP.
+- Priority Banner reste prioritaire pour la conception et le développement ;
+- la version avancée centralisée par liste devient un futur produit distinct « Message Center » ;
+- les listes créées pendant le prototype sont laissées intactes et ne sont plus utilisées ;
+- aucun ciblage global, accusé de lecture ou administration à l’échelle du tenant n’entre dans ce MVP.

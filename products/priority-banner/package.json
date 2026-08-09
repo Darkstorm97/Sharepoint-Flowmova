@@ -1,7 +1,7 @@
 {
   "name": "priority-banner",
   "version": "1.0.0",
-  "description": "A multilingual SharePoint web part for displaying time-bound priority messages.",
+  "description": "A multilingual configurable SharePoint web part for priority messages.",
   "author": "Flowmova",
   "private": true,
   "engines": {
@@ -19,7 +19,6 @@
     "react-dom": "17.0.1",
     "@fluentui/react": "^8.106.4",
     "@microsoft/sp-core-library": "1.23.2",
-    "@microsoft/sp-http": "1.23.2",
     "@microsoft/sp-component-base": "1.23.2",
     "@microsoft/sp-property-pane": "1.23.2",
     "@microsoft/sp-webpart-base": "1.23.2",

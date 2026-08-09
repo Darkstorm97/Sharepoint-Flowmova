@@ -25,12 +25,15 @@ const priorityIconNames: Record<PriorityLevel, string> = {
 
 export default class PriorityBanner extends React.Component<IPriorityBannerProps, IPriorityBannerState> {
   public state: IPriorityBannerState = {
-    isDismissed: false
+    isDismissed: this._wasDismissed(this.props.dismissKey)
   };
 
   public componentDidUpdate(previousProps: IPriorityBannerProps): void {
-    if (this.state.isDismissed && previousProps !== this.props) {
-      this.setState({ isDismissed: false });
+    if (previousProps.dismissKey !== this.props.dismissKey) {
+      const isDismissed: boolean = this._wasDismissed(this.props.dismissKey);
+      if (isDismissed !== this.state.isDismissed) {
+        this.setState({ isDismissed });
+      }
     }
   }
 
@@ -88,8 +91,21 @@ export default class PriorityBanner extends React.Component<IPriorityBannerProps
   }
 
   private readonly _dismiss = (): void => {
+    try {
+      window.localStorage.setItem(this.props.dismissKey, '1');
+    } catch {
+      // The banner can still be dismissed for this render when storage is unavailable.
+    }
     this.setState({ isDismissed: true });
   };
+
+  private _wasDismissed(dismissKey: string): boolean {
+    try {
+      return window.localStorage.getItem(dismissKey) === '1';
+    } catch {
+      return false;
+    }
+  }
 
   private _getSafeActionUrl(actionUrl: string | undefined): string | undefined {
     const trimmedUrl: string = actionUrl?.trim() || '';

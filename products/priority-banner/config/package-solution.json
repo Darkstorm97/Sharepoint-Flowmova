@@ -15,14 +15,14 @@
     },
     "metadata": {
       "shortDescription": {
-        "default": "Display time-bound priority messages on SharePoint pages.",
-        "fr-fr": "Affichez des messages prioritaires programmés dans les pages SharePoint.",
-        "fr-ca": "Affichez des messages prioritaires programmés dans les pages SharePoint."
+        "default": "Add a configurable priority message to any SharePoint page.",
+        "fr-fr": "Ajoutez un message prioritaire configurable à toute page SharePoint.",
+        "fr-ca": "Ajoutez un message prioritaire configurable à toute page SharePoint."
       },
       "longDescription": {
-        "default": "Priority Banner helps organizations display clear, accessible and time-bound priority messages on modern SharePoint pages.",
-        "fr-fr": "Priority Banner aide les organisations à afficher des messages prioritaires clairs, accessibles et programmés dans les pages SharePoint modernes.",
-        "fr-ca": "Priority Banner aide les organisations à afficher des messages prioritaires clairs, accessibles et programmés dans les pages SharePoint modernes."
+        "default": "Priority Banner displays accessible messages configured directly on a SharePoint page, with optional expiration and automatic language selection.",
+        "fr-fr": "Priority Banner affiche des messages accessibles configurés directement dans une page SharePoint, avec expiration facultative et sélection automatique de la langue.",
+        "fr-ca": "Priority Banner affiche des messages accessibles configurés directement dans une page SharePoint, avec expiration facultative et sélection automatique de la langue."
       },
       "screenshotPaths": [],
       "videoUrl": "",

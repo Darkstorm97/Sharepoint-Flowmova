@@ -43,13 +43,14 @@ Bandeau destiné aux communications importantes : information, avertissement, ur
 
 **Premier produit sélectionné.** Son [périmètre MVP est validé](priority-banner-mvp.md). Son nom générique lui permet d'être utilisé dans un intranet, un site d'équipe, un portail de projet, un extranet ou un site de service.
 
-Le premier périmètre envisagé comprend :
+Le périmètre MVP validé comprend :
 
 - quatre niveaux de priorité ;
-- dates de début et de fin ;
+- expiration facultative, sans date de début ;
 - lien ou bouton facultatif ;
 - fermeture configurable par l'utilisateur ;
-- données stockées dans une liste SharePoint ;
+- configuration directe de chaque message dans la page ;
+- traduction facultative avec détection automatique de la langue ;
 - personnalisation visuelle et affichage mobile.
 
 Le ciblage par groupe, l'accusé de lecture et l'affichage global sur plusieurs sites seront étudiés dans des versions ultérieures.

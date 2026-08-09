@@ -4,6 +4,7 @@ import type { PriorityLevel } from '../domain/PriorityLevel';
 export interface IPriorityBannerProps {
   actionText?: string;
   actionUrl?: string;
+  dismissKey: string;
   dismissLabel: string;
   layout: BannerLayout;
   message: string;
