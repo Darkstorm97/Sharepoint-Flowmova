@@ -25,7 +25,7 @@
       "fr-fr": "Ajoutez un message prioritaire configurable à toute page SharePoint.",
       "fr-ca": "Ajoutez un message prioritaire configurable à toute page SharePoint."
     },
-    "officeFabricIconFontName": "Megaphone",
+    "iconImageUrl": "./assets/priority-banner-toolbox.png",
     "properties": {
       "allowDismiss": true,
       "layout": "standard",

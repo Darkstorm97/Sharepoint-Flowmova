@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
+  <title id="title">Priority Banner icon</title>
+  <desc id="description">A priority notification banner using the FlowMova colour palette.</desc>
+
+  <rect width="512" height="512" rx="112" fill="#13233E"/>
+  <path d="M112 152h288c26.51 0 48 21.49 48 48v112c0 26.51-21.49 48-48 48H112c-26.51 0-48-21.49-48-48V200c0-26.51 21.49-48 48-48Z" fill="#FFFFFF"/>
+  <path d="M112 152h34v208h-34c-26.51 0-48-21.49-48-48V200c0-26.51 21.49-48 48-48Z" fill="#FF8A1E"/>
+
+  <circle cx="176" cy="256" r="50" fill="#168AF4"/>
+  <rect x="168" y="220" width="16" height="48" rx="8" fill="#FFFFFF"/>
+  <circle cx="176" cy="288" r="9" fill="#FFFFFF"/>
+
+  <rect x="246" y="218" width="142" height="22" rx="11" fill="#13233E"/>
+  <rect x="246" y="270" width="110" height="18" rx="9" fill="#37CBD7"/>
+
+  <circle cx="412" cy="340" r="42" fill="#2FB252"/>
+  <path d="m392 340 13 13 27-29" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

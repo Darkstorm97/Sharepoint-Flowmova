@@ -1,5 +1,16 @@
 # Captures Store — Priority Banner
 
+## Icône du produit
+
+Les formats prêts à téléverser dans Partner Center sont disponibles dans le sous-répertoire `icon` :
+
+- source vectorielle SVG et version PNG 512 × 512 ;
+- grand logo Store : 300 × 300 et 216 × 216 ;
+- formats complémentaires : 192 × 192, 96 × 96, 90 × 90, 48 × 48 et 32 × 32 ;
+- variante SharePoint de 40 × 28 intégrée directement au Web Part.
+
+L’icône représente un bandeau prioritaire et utilise la palette FlowMova. Elle ne contient ni texte ni marque dépendante du client.
+
 Source : page SharePoint de démonstration publiée dans le tenant de validation.
 
 Format : PNG, 1280 × 720 pixels.
