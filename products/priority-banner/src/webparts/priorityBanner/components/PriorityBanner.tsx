@@ -55,7 +55,8 @@ export default class PriorityBanner extends React.Component<IPriorityBannerProps
     }
 
     const safeActionUrl: string | undefined = this._getSafeActionUrl(actionUrl);
-    const layoutClassName: string = layout === BannerLayout.Compact ? styles.compact : styles.standard;
+    const isCompact: boolean = layout === BannerLayout.Compact;
+    const layoutClassName: string = isCompact ? styles.compact : styles.standard;
 
     return (
       <section
@@ -63,15 +64,17 @@ export default class PriorityBanner extends React.Component<IPriorityBannerProps
         aria-label={priorityLabel}
         role={priority === PriorityLevel.Urgent || priority === PriorityLevel.Critical ? 'alert' : 'status'}
       >
-        <div className={styles.icon} aria-hidden="true">
-          <Icon iconName={priorityIconNames[priority]} />
-        </div>
+        {!isCompact && (
+          <div className={styles.icon} aria-hidden="true">
+            <Icon iconName={priorityIconNames[priority]} />
+          </div>
+        )}
         <div className={styles.content}>
-          <span className={styles.priorityLabel}>{priorityLabel}</span>
+          {!isCompact && <span className={styles.priorityLabel}>{priorityLabel}</span>}
           <h2 className={styles.title}>{title || priorityLabel}</h2>
-          <p className={styles.message}>{message}</p>
+          {!isCompact && <p className={styles.message}>{message}</p>}
         </div>
-        {actionText && safeActionUrl && (
+        {!isCompact && actionText && safeActionUrl && (
           <a className={styles.action} href={safeActionUrl} rel="noreferrer" target="_blank">
             {actionText}
           </a>

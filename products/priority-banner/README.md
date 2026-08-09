@@ -6,7 +6,7 @@ Priority Banner est un Web Part SharePoint Framework autonome publié par Flowmo
 
 - titre, message et priorité configurables ;
 - niveaux Information, Important, Urgent et Critique ;
-- formats Standard et Compact ;
+- format Standard complet et format Compact limité au titre ;
 - lien d’action facultatif ;
 - fermeture persistante dans le navigateur, sauf pour un message Critique ;
 - expiration facultative, obligatoirement future lors de la saisie ;

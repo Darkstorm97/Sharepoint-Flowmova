@@ -21,6 +21,8 @@ Une instance du Web Part correspond à un message. Le propriétaire saisit direc
 - une date et une heure d’expiration facultatives ;
 - une traduction facultative.
 
+Le format Standard affiche le contenu complet. Le format Compact affiche uniquement le titre, avec la couleur de priorité et la fermeture lorsqu’elle est autorisée.
+
 Plusieurs instances peuvent être ajoutées à la même page. Aucune date de début n’est demandée. Une expiration saisie doit être future ; une fois atteinte, le composant disparaît automatiquement en mode lecture sans laisser de contenu vide.
 
 ## Langues
