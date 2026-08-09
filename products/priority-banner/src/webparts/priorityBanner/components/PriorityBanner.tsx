@@ -64,11 +64,9 @@ export default class PriorityBanner extends React.Component<IPriorityBannerProps
         aria-label={priorityLabel}
         role={priority === PriorityLevel.Urgent || priority === PriorityLevel.Critical ? 'alert' : 'status'}
       >
-        {!isCompact && (
-          <div className={styles.icon} aria-hidden="true">
-            <Icon iconName={priorityIconNames[priority]} />
-          </div>
-        )}
+        <div className={styles.icon} aria-hidden="true">
+          <Icon iconName={priorityIconNames[priority]} />
+        </div>
         <div className={styles.content}>
           {!isCompact && <span className={styles.priorityLabel}>{priorityLabel}</span>}
           <h2 className={styles.title}>{title || priorityLabel}</h2>
