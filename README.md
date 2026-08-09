@@ -1,6 +1,6 @@
 # SharePoint Components
 
-Ce dépôt centralise la conception, la documentation et, à terme, le code des composants SharePoint développés par Flowmova.
+Ce dépôt centralise la conception, la documentation et, à terme, le code des composants SharePoint développés par FlowMova.
 
 ## Vision
 
@@ -38,7 +38,7 @@ Les prochaines étapes sont :
 - intégration native à l'écosystème Microsoft 365 du client ;
 - composants installables et déployables indépendamment ;
 - publication individuelle de chaque produit sur le Store ;
-- présence discrète de la marque Flowmova après installation ;
+- présence discrète de la marque FlowMova après installation ;
 - permissions et dépendances externes réduites au minimum ;
 - utilisation d'Azure uniquement lorsqu'une fonctionnalité le nécessite réellement.
 
@@ -48,4 +48,4 @@ Consulter l'[étude de marché initiale](docs/03-etude-des-besoins/etude-marche-
 
 L'[environnement Microsoft 365 de développement](docs/05-architecture/environnement-tenant.md) est configuré et vérifié pour les futurs essais SPFx.
 
-Le [mini-site public Flowmova](https://darkstorm97.github.io/Sharepoint-Flowmova/) regroupe la présentation de Priority Banner, le support, la politique de confidentialité et les conditions d’utilisation nécessaires à la préparation Store.
+Le [mini-site public FlowMova](https://darkstorm97.github.io/Sharepoint-Flowmova/) regroupe la présentation de Priority Banner, le support, la politique de confidentialité et les conditions d’utilisation nécessaires à la préparation Store.

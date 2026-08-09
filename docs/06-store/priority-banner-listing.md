@@ -4,7 +4,7 @@ Statut : contenu préparé, publication GitHub Pages validée
 
 Date : 9 août 2026
 
-Éditeur : `Flowmova`
+Éditeur : `FlowMova`
 
 ## Coordonnées publiques
 

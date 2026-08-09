@@ -2,7 +2,7 @@
   "name": "priority-banner",
   "version": "1.0.0",
   "description": "A multilingual configurable SharePoint web part for priority messages.",
-  "author": "Flowmova",
+  "author": "FlowMova",
   "private": true,
   "engines": {
     "node": ">=22.14.0 < 23.0.0"
