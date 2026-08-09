@@ -40,7 +40,9 @@
 
 - informations éditeur, URL de support, confidentialité et conditions finalisées ;
 - descriptions et cinq captures Store de 1280 × 720 pixels produites ;
-- contrôler le package, les permissions et le comportement de mise à jour ;
+- dossier de livraison 1.0.1, guide d’installation, notes de version et instructions de test préparés ;
+- package, permissions, dépendances de production et comportement de mise à jour contrôlés ;
+- fermer les contrôles manuels bloquants de la checklist de certification ;
 - publier la livraison indépendante.
 
 Une gestion centralisée par liste reste une piste séparée pour un futur produit avancé « Message Center ».
