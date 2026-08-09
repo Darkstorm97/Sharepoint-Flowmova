@@ -35,7 +35,6 @@ define([], function() {
     "ExpiredTitle": "This priority message has expired",
     "ExpiredDescription": "Choose a future expiration date or clear the expiration to display it again.",
     "RequiredFieldError": "This field is required.",
-    "TranslationPairError": "Provide both the translated title and translated message.",
     "InvalidUrlError": "Enter an HTTPS, HTTP, site-relative, or anchor link.",
     "YesLabel": "Yes",
     "NoLabel": "No"

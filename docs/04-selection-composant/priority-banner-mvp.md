@@ -14,7 +14,7 @@ Permettre à un propriétaire de page SharePoint d’ajouter en quelques instant
 
 Une instance du Web Part correspond à un message. Le propriétaire saisit directement dans les propriétés :
 
-- le titre et le message ;
+- le titre obligatoire et un message facultatif ;
 - la priorité : Information, Important, Urgent ou Critique ;
 - un bouton et un lien facultatifs ;
 - l’autorisation de fermeture ;

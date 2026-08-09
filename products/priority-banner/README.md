@@ -4,7 +4,7 @@ Priority Banner est un Web Part SharePoint Framework autonome publié par Flowmo
 
 ## Fonctionnalités du MVP
 
-- titre, message et priorité configurables ;
+- titre obligatoire, message facultatif et priorité configurable ;
 - niveaux Information, Important, Urgent et Critique ;
 - format Standard complet et format Compact limité au titre ;
 - lien d’action facultatif ;

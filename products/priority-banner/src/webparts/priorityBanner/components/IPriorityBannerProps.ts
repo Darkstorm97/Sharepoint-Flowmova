@@ -7,7 +7,7 @@ export interface IPriorityBannerProps {
   dismissKey: string;
   dismissLabel: string;
   layout: BannerLayout;
-  message: string;
+  message?: string;
   priority: PriorityLevel;
   priorityLabel: string;
   showDismiss: boolean;

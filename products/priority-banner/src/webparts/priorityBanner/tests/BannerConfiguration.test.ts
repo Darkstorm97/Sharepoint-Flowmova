@@ -37,16 +37,28 @@ describe('BannerConfiguration', () => {
     });
   });
 
-  it('falls back to the complete primary content when the translation is incomplete', () => {
+  it('allows an optional translated message when the translated title exists', () => {
     expect(selectBannerContent({
       ...baseProperties,
       translatedTitle: 'Translated title',
       translationEnabled: true
-    }, false)?.title).toBe('Titre principal');
+    }, false)).toEqual({
+      actionText: undefined,
+      message: undefined,
+      title: 'Translated title'
+    });
   });
 
-  it('does not render incomplete primary content', () => {
-    expect(selectBannerContent({ ...baseProperties, message: '   ' }, true)).toBeUndefined();
+  it('renders a title without a message', () => {
+    expect(selectBannerContent({ ...baseProperties, message: '   ' }, true)).toEqual({
+      actionText: 'En savoir plus',
+      message: undefined,
+      title: 'Titre principal'
+    });
+  });
+
+  it('does not render without a title', () => {
+    expect(selectBannerContent({ ...baseProperties, title: '   ' }, true)).toBeUndefined();
   });
 
   it('accepts only future expiration dates and identifies expired messages', () => {

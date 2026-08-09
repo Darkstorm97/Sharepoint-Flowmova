@@ -35,7 +35,6 @@ define([], function() {
     "ExpiredTitle": "Ce message a expiré",
     "ExpiredDescription": "Choisissez une nouvelle date d’expiration ou retirez-la pour réafficher le message.",
     "RequiredFieldError": "Ce champ est obligatoire.",
-    "TranslationPairError": "Le titre et le message traduits doivent être remplis ensemble.",
     "InvalidUrlError": "Utilisez une adresse HTTPS, HTTP ou un lien SharePoint relatif.",
     "YesLabel": "Oui",
     "NoLabel": "Non"

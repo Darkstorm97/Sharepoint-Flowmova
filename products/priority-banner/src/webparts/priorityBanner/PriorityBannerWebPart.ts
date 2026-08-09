@@ -118,13 +118,11 @@ export default class PriorityBannerWebPart extends BaseClientSideWebPart<IPriori
       ? [
         PropertyPaneTextField('translatedTitle', {
           label: strings.TranslatedTitleFieldLabel,
-          onGetErrorMessage: this._validateTranslatedPair,
           value: this.properties.translatedTitle
         }),
         PropertyPaneTextField('translatedMessage', {
           label: strings.TranslatedMessageFieldLabel,
           multiline: true,
-          onGetErrorMessage: this._validateTranslatedPair,
           rows: 4,
           value: this.properties.translatedMessage
         }),
@@ -152,7 +150,6 @@ export default class PriorityBannerWebPart extends BaseClientSideWebPart<IPriori
                 PropertyPaneTextField('message', {
                   label: strings.MessageFieldLabel,
                   multiline: true,
-                  onGetErrorMessage: requiredMessage,
                   rows: 4,
                   value: this.properties.message
                 }),
@@ -222,12 +219,6 @@ export default class PriorityBannerWebPart extends BaseClientSideWebPart<IPriori
   private get _useFrench(): boolean {
     return this.context.pageContext.cultureInfo.currentUICultureName.toLowerCase().startsWith('fr');
   }
-
-  private readonly _validateTranslatedPair = (): string => {
-    const titleIsPresent: boolean = Boolean(this.properties.translatedTitle?.trim());
-    const messageIsPresent: boolean = Boolean(this.properties.translatedMessage?.trim());
-    return titleIsPresent === messageIsPresent ? '' : strings.TranslationPairError;
-  };
 
   private _expirationPropertyField(): IPropertyPaneField<IPropertyPaneCustomFieldProps> {
     return {

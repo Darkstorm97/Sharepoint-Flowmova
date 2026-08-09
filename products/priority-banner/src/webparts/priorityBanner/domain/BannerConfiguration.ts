@@ -19,7 +19,7 @@ export interface IConfigurableBannerProperties {
 
 export interface ISelectedBannerContent {
   actionText?: string;
-  message: string;
+  message?: string;
   title: string;
 }
 
@@ -29,7 +29,7 @@ export function selectBannerContent(
 ): ISelectedBannerContent | undefined {
   const primaryTitle: string | undefined = optionalText(properties.title);
   const primaryMessage: string | undefined = optionalText(properties.message);
-  if (!primaryTitle || !primaryMessage) {
+  if (!primaryTitle) {
     return undefined;
   }
 
@@ -39,12 +39,12 @@ export function selectBannerContent(
   const translatedMessage: string | undefined = optionalText(properties.translatedMessage);
   const canUseTranslation: boolean = properties.translationEnabled === true &&
     viewerLanguage !== primaryLanguage &&
-    Boolean(translatedTitle && translatedMessage);
+    Boolean(translatedTitle);
 
   return canUseTranslation
     ? {
       actionText: optionalText(properties.translatedActionText),
-      message: translatedMessage!,
+      message: translatedMessage,
       title: translatedTitle!
     }
     : {

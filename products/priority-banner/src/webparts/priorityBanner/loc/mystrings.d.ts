@@ -36,7 +36,6 @@ declare interface IPriorityBannerWebPartStrings {
   TranslatedMessageFieldLabel: string;
   TranslatedTitleFieldLabel: string;
   TranslationGroupName: string;
-  TranslationPairError: string;
   YesLabel: string;
 }
 

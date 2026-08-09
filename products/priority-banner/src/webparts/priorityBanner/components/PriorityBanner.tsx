@@ -72,7 +72,7 @@ export default class PriorityBanner extends React.Component<IPriorityBannerProps
         <div className={styles.content}>
           {!isCompact && <span className={styles.priorityLabel}>{priorityLabel}</span>}
           <h2 className={styles.title}>{title || priorityLabel}</h2>
-          {!isCompact && <p className={styles.message}>{message}</p>}
+          {!isCompact && message && <p className={styles.message}>{message}</p>}
         </div>
         {!isCompact && actionText && safeActionUrl && (
           <a className={styles.action} href={safeActionUrl} rel="noreferrer" target="_blank">
