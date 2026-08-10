@@ -21,8 +21,8 @@ La fiche commerciale et les textes français et anglais se trouvent dans [la fic
 - version de solution : `1.0.1.0`
 - version du composant : `1.0.1`
 - emplacement local : `products/priority-banner/sharepoint/solution/priority-banner.sppkg`
-- taille contrôlée : 34 760 octets
-- SHA-256 contrôlé : `B39820A85D97467C0900A5171CB97AD771DD1BF27E615FCF7FDC01857C082949`
+- taille contrôlée : 34 756 octets
+- SHA-256 contrôlé : `5355947A50F4182C6B3C1BF9FD3E7E9169F5137013290BC51208B4224D0B332D`
 
 Le package est généré localement et n’est pas suivi par Git. Le hash doit être recalculé après toute nouvelle compilation, même si le numéro de version ne change pas.
 
@@ -32,6 +32,7 @@ Le package est généré localement et n’est pas suivi par Git. Le hash doit �
 - 7 tests automatisés réussis sur 7 ;
 - audit npm des dépendances de production : 0 vulnérabilité connue au 9 août 2026 ;
 - package accepté et déployé dans le tenant de validation ;
+- PartnerID de localisation FlowMova `7145647` intégré au manifeste du package ;
 - page moderne publiée et comportement fonctionnel confirmé ;
 - pages publiques du produit, du support, de confidentialité et des conditions accessibles avec un statut HTTP 200.
 

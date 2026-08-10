@@ -19,8 +19,8 @@ Légende :
 - [x] Le package a été accepté et déployé dans l’App Catalog du tenant de validation.
 - [x] L’auteur est **FlowMova** dans le package et la fiche Store.
 - [x] Les URL du produit, de confidentialité et des conditions sont présentes.
-- [ ] **Bloquant —** remplacer la valeur provisoire `mpnId: Undefined-1.23.2` par l’identifiant partenaire réel ou retirer cette propriété facultative avant le build soumis.
-- [ ] **Bloquant —** recalculer et consigner le SHA-256 du fichier exact téléversé dans Partner Center.
+- [x] Le `mpnId` contient le PartnerID FlowMova `7145647` fourni par Partner Center.
+- [x] SHA-256 du candidat final recalculé et consigné après intégration du PartnerID.
 
 ## 2. Permissions, données et sécurité
 
